@@ -20,7 +20,7 @@ public class UserDAOjdbc implements UserDAO {
 
     @Override
     public User getUserById(int id) {
-        String sql = "SELECT * FROM users WHERE id = ?";
+        String sql = "SELECT * FROM users WHERE user_id = " + id;
         User user = null;
         try(Connection conn = databaseConnection.getConnection();
         ResultSet rs = conn.prepareStatement(sql).executeQuery()) {
