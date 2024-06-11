@@ -1,4 +1,4 @@
-package com.codecool.backend.dao;
+package com.codecool.backend.configuration;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
