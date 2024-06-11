@@ -1,5 +1,7 @@
 package com.codecool.backend.configuration;
 
+import com.codecool.backend.dao.UserDAO;
+import com.codecool.backend.dao.UserDAOjdbc;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.context.annotation.Bean;
@@ -16,6 +18,11 @@ public class Configuration {
     @Bean
     public DatabaseConnection databaseConnection() {
         return new DatabaseConnection(databaseURL, databaseUsername, databasePassword);
+    }
+
+    @Bean
+    public UserDAO usersDaoJDBC(DatabaseConnection databaseConnection) {
+        return new UserDAOjdbc(databaseConnection);
     }
 
 }
