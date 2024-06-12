@@ -1,8 +1,10 @@
 package com.codecool.backend.service;
 
+import com.codecool.backend.controller.dto.MainPostDTO;
 import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.dao.PostDAO;
+import com.codecool.backend.dao.model.MainPagePost;
 import com.codecool.backend.dao.model.Post;
 import org.springframework.stereotype.Service;
 
@@ -14,6 +16,11 @@ public class PostService {
 
     public PostService(PostDAO postDAO) {
         this.postDAO = postDAO;
+    }
+
+    public List<MainPostDTO> getAllPosts() {
+        List<MainPagePost> posts = postDAO.getAllPosts();
+        return posts.stream().map(this::convertMainPagePostToMainPostDTO).toList();
     }
 
     public List<PostDTO> getAllPostsByUserId(int userId) {
@@ -29,6 +36,10 @@ public class PostService {
 
     private PostDTO convertPostToPostDTO(Post post) {
         return new PostDTO(post.post_id(), post.user_id(), post.description(), post.picture(), post.creation_date());
+    }
+
+    private MainPostDTO convertMainPagePostToMainPostDTO(MainPagePost post) {
+        return new MainPostDTO(post.username(), post.description(), post.picture(), post.creation_date());
     }
 
 }
