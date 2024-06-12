@@ -1,12 +1,10 @@
 package com.codecool.backend.dao;
 
 import com.codecool.backend.configuration.DatabaseConnection;
+import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.dao.model.Post;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -38,5 +36,22 @@ public class PostDaoJdbc implements PostDAO {
             throw new RuntimeException(e);
         }
         return posts;
+    }
+
+    @Override
+    public boolean createPost(NewPostDTO postDTO, int userID) {
+        String sql = "INSERT INTO posts (user_id, description, picture) VALUES (?, ?, ?)";
+        try (Connection connection = databaseConnection.getConnection();
+             PreparedStatement ps = connection.prepareStatement(sql)){
+            ps.setInt(1, userID);
+            ps.setString(2, postDTO.description());
+            ps.setString(3, postDTO.picture());
+            ps.executeUpdate();
+            return true;
+        }
+        catch (SQLException e) {
+            System.out.println("Error during creation of new post. " + e.getMessage());
+        }
+        return false;
     }
 }
