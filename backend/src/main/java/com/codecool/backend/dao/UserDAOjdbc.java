@@ -2,6 +2,7 @@ package com.codecool.backend.dao;
 
 import com.codecool.backend.configuration.DatabaseConnection;
 import com.codecool.backend.controller.dto.NewUserDTO;
+import com.codecool.backend.controller.dto.UserLoginDTO;
 import com.codecool.backend.dao.model.User;
 
 import java.sql.Connection;
@@ -21,15 +22,7 @@ public class UserDAOjdbc implements UserDAO {
         String sql = "SELECT * FROM users WHERE user_id = " + id;
         User user = null;
         try (Connection conn = databaseConnection.getConnection(); ResultSet rs = conn.prepareStatement(sql).executeQuery()) {
-            if (rs.next()) {
-                int userId = rs.getInt("user_id");
-                String firstName = rs.getString("first_name");
-                String lastName = rs.getString("last_name");
-                String username = rs.getString("username");
-                String password = rs.getString("password");
-                String email = rs.getString("email");
-                user = new User(userId, firstName, lastName, username, password, email);
-            }
+            user = getUser(user, rs);
 
         } catch (SQLException e) {
             System.out.println("Error while retrieving User with given id " + id + ", " + e.getMessage());
@@ -53,5 +46,36 @@ public class UserDAOjdbc implements UserDAO {
             System.out.println("Error during create a new user. " + e.getMessage());
         }
         return false;
+    }
+
+    @Override
+    public User loginUser(UserLoginDTO login) {
+        String sql = "SELECT * FROM users WHERE username = ? AND password = ?";
+        User user = null;
+        try (Connection connection = databaseConnection.getConnection();
+        PreparedStatement ps = connection.prepareStatement(sql)){
+            ps.setString(1, login.username());
+            ps.setString(2, login.password());
+
+            try (ResultSet rs = ps.executeQuery()){
+                user = getUser(user, rs);
+            }
+        } catch (SQLException e) {
+            System.out.println("Error during login user. " + e.getMessage());
+        }
+        return user;
+    }
+
+    private User getUser(User user, ResultSet rs) throws SQLException {
+        if (rs.next()){
+            int userId = rs.getInt("user_id");
+            String firstName = rs.getString("first_name");
+            String lastName = rs.getString("last_name");
+            String username = rs.getString("username");
+            String password = rs.getString("password");
+            String email = rs.getString("email");
+            user = new User(userId, firstName, lastName, username, password, email);
+        }
+        return user;
     }
 }
