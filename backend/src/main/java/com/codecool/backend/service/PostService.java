@@ -1,5 +1,6 @@
 package com.codecool.backend.service;
 
+import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.dao.PostDAO;
 import com.codecool.backend.dao.model.Post;
@@ -20,6 +21,10 @@ public class PostService {
         return posts.stream()
                 .map(this::convertPostToPostDTO)
                 .toList();
+    }
+
+    public boolean createNewPost(NewPostDTO postDTO, int userId) {
+        return postDAO.createPost(postDTO, userId);
     }
 
     private PostDTO convertPostToPostDTO(Post post) {
