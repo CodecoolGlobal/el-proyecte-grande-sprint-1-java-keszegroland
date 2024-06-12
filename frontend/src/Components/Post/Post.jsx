@@ -1,35 +1,56 @@
 import { useEffect, useState } from "react"
+import "./Post.css";
+import { FaRegPaperPlane } from "react-icons/fa";
+import { PiHeartThin } from "react-icons/pi";
+import { FcLike } from "react-icons/fc";
 
 const fetchPosts = () => {
-    return fetch('/api/post/').then(res => res.json());
+    return fetch('/api/post').then(res => res.json());
 }
 
 
 function Post() {
-    const [username, setUserName] = useState('')
-    const [picture, setPicture] = useState('')
-    const [date, setDate] = useState('')
-    const [description, setDescription] = useState('')
+    const [posts, setPosts] = useState([])
+    const [liked, setLiked] = useState(false)
 
     useEffect(() => {
         fetchPosts()
-            .then(post => {
-                setPicture(post.picture)
-                setDate(post.creation_date)
-                setDescription(post.description)
+            .then(posts => {
+                setPosts(posts)
             })
     }, []);
 
+    const handlePostComment = () => {
+
+    }
+
+    const handleLike = () => {
+        setLiked(!liked);
+    }
+
     return (
         <div className="post">
-            <p><b>{username}</b></p>
-            <div>{picture}</div>
-            <div>{date}</div>
-            <p>{description}</p>
-            <form>
-                <input placeholder="Comment here" name="comment" />
-            </form>
-            <button>View all comments</button>
+            {posts.map(post => (
+                <div key={post.username} className="onePost">
+                    <div className="postContent">
+                        <p className="username"><b>{post.username}</b></p>
+                        <img
+                            className="images"
+                            src={post.picture}
+                            alt="Kiselefánt" />
+                        <div>{liked ? <FcLike className="heart" onClick={handleLike} /> : <PiHeartThin className="heart" onClick={handleLike} />}</div>
+
+                        <div>{post.creation_date.split('T').join(' ').slice(0, -10)}</div>
+                        <p>{post.description}</p>
+                        <form>
+                            <input className="commentHere" placeholder="Comment here" name="comment" />
+                            {<FaRegPaperPlane onClick={handlePostComment} />}
+                        </form>
+                        <p>View all comments</p>
+                    </div>
+                </div>
+
+            ))}
         </div>
     )
 }

@@ -1,0 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+.images {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    object-position: 25% 25%;
+}
+
+.postContent {
+    width: 50%;
+    height: 50%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.onePost {
+    width: 50%;
+    height: 50%;
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.commentHere {
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.username {
+    font-family: "Quicksand", Arial, Helvetica, sans-serif;
+}
+
+.heart {
+    width: 8%;
+    height: 8%;
+}
