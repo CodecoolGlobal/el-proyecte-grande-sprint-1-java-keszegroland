@@ -25,7 +25,7 @@ function Post() {
     return (
         <div className="post">
             {posts.map(post => (
-                <div key={post.username} className="onePost">
+                <div key={post.creation_date} className="onePost">
                     <div className="postContent">
                         <p className="username"><b>{post.username}</b></p>
                         <img

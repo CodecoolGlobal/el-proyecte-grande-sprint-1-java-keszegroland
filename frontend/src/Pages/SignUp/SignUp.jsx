@@ -1,5 +1,5 @@
 import SignUpForm from "../../Components/SignUpForm/SignUpForm.jsx";
-import "./signUp.css";
+import "./SignUp.css";
 
 function SignUp() {
 

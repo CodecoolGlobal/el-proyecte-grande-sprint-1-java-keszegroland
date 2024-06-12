@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./signUpForm.css";
+import "./SignUpForm.css";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { FaLock, FaUser } from "react-icons/fa";
@@ -31,7 +31,7 @@ function SignUpForm() {
 		createUser(user)
 			.then(() => {
 				setLoading(false);
-				navigate("/user/login");
+				navigate("/");
 			})
 	}
 
