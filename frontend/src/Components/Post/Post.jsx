@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react"
 import "./Post.css";
 import { FaRegPaperPlane } from "react-icons/fa";
-import { PiHeartThin } from "react-icons/pi";
-import { FcLike } from "react-icons/fc";
+import Like from "./Like";
 
 const fetchPosts = () => {
-    return fetch('/api/post').then(res => res.json());
+    return fetch('/api/posts').then(res => res.json());
 }
 
 
 function Post() {
     const [posts, setPosts] = useState([])
-    const [liked, setLiked] = useState(false)
 
     useEffect(() => {
         fetchPosts()
@@ -24,10 +22,6 @@ function Post() {
 
     }
 
-    const handleLike = () => {
-        setLiked(!liked);
-    }
-
     return (
         <div className="post">
             {posts.map(post => (
@@ -38,8 +32,7 @@ function Post() {
                             className="images"
                             src={post.picture}
                             alt="Kiselefánt" />
-                        <div>{liked ? <FcLike className="heart" onClick={handleLike} /> : <PiHeartThin className="heart" onClick={handleLike} />}</div>
-
+                        <Like />
                         <div>{post.creation_date.split('T').join(' ').slice(0, -10)}</div>
                         <p>{post.description}</p>
                         <form>
