@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import MainPage from './Pages/MainPage/MainPage';
 import SignUp from './Pages/SignUp/SignUp';
 
 const router = createBrowserRouter(
@@ -12,7 +12,7 @@ const router = createBrowserRouter(
       children: [
         {
           path: "/",
-          element: <App />
+          element: <MainPage />
         },
         {
           path: "/user/signup",

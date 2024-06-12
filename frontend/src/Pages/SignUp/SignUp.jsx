@@ -4,8 +4,10 @@ import "./signUp.css";
 function SignUp() {
 
 	return (
-		<div className="SignUp">
-			<SignUpForm/>
+		<div className="wrapper">
+			<div className="SignUp">
+				<SignUpForm />
+			</div>
 		</div>
 	);
 };
