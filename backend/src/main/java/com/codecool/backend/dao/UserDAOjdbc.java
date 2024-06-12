@@ -1,15 +1,13 @@
 package com.codecool.backend.dao;
 
 import com.codecool.backend.configuration.DatabaseConnection;
+import com.codecool.backend.controller.dto.NewUserDTO;
 import com.codecool.backend.dao.model.User;
 
-import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.HashSet;
-import java.util.Set;
 
 public class UserDAOjdbc implements UserDAO {
     private DatabaseConnection databaseConnection;
@@ -22,8 +20,7 @@ public class UserDAOjdbc implements UserDAO {
     public User getUserById(int id) {
         String sql = "SELECT * FROM users WHERE user_id = " + id;
         User user = null;
-        try(Connection conn = databaseConnection.getConnection();
-        ResultSet rs = conn.prepareStatement(sql).executeQuery()) {
+        try (Connection conn = databaseConnection.getConnection(); ResultSet rs = conn.prepareStatement(sql).executeQuery()) {
             if (rs.next()) {
                 int userId = rs.getInt("user_id");
                 String firstName = rs.getString("first_name");
@@ -39,5 +36,22 @@ public class UserDAOjdbc implements UserDAO {
             throw new RuntimeException(e);
         }
         return user;
+    }
+
+    @Override
+    public boolean createNewUser(NewUserDTO user) {
+        String sql = "insert into users(first_name, last_name, username, password, email) values(?,?,?,?,?)";
+        try (Connection connection = databaseConnection.getConnection(); PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setString(1, user.firstName());
+            ps.setString(2, user.lastName());
+            ps.setString(3, user.username());
+            ps.setString(4, user.password());
+            ps.setString(5, user.email());
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.out.println("Error during create a new user. " + e.getMessage());
+        }
+        return false;
     }
 }
