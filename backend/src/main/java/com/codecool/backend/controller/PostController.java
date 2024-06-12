@@ -1,5 +1,6 @@
 package com.codecool.backend.controller;
 
+import com.codecool.backend.controller.dto.MainPostDTO;
 import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.service.PostService;
@@ -16,6 +17,11 @@ public class PostController {
     @Autowired
     public PostController(PostService postService) {
         this.postService = postService;
+    }
+
+    @GetMapping
+    public List<MainPostDTO> getAllPosts() {
+        return postService.getAllPosts();
     }
 
     @GetMapping("/{userID}")

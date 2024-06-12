@@ -2,6 +2,7 @@ package com.codecool.backend.dao;
 
 import com.codecool.backend.configuration.DatabaseConnection;
 import com.codecool.backend.controller.dto.NewPostDTO;
+import com.codecool.backend.dao.model.MainPagePost;
 import com.codecool.backend.dao.model.Post;
 
 import java.sql.*;
@@ -14,6 +15,30 @@ public class PostDaoJdbc implements PostDAO {
 
     public PostDaoJdbc(DatabaseConnection connection) {
         this.databaseConnection = connection;
+    }
+
+    @Override
+    public List<MainPagePost> getAllPosts() {
+        List<MainPagePost> posts = new ArrayList<>();
+        String sql = "select users.username, posts.description, posts.picture, posts.creation_date\n" +
+                "from posts\n" +
+                "join users\n" +
+                "on posts.user_id = users.user_id";
+        try (Connection connection = databaseConnection.getConnection();
+        ResultSet rs = connection.prepareStatement(sql).executeQuery()) {
+            while (rs.next()) {
+                String username = rs.getString("username");
+                String description = rs.getString("description");
+                String picture = rs.getString("picture");
+                Timestamp date = rs.getTimestamp("creation_date");
+                LocalDateTime convertedDate = date.toLocalDateTime();
+                MainPagePost post = new MainPagePost(username, description, picture, convertedDate);
+                posts.add(post);
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return posts;
     }
 
     @Override
