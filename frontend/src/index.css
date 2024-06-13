@@ -5,3 +5,7 @@ body {
   font-family: "Quicksand", Arial, Helvetica, sans-serif;
   color: black;
 }
+
+* {
+  box-sizing: border-box;
+}

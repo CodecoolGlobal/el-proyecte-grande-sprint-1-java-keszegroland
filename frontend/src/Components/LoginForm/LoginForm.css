@@ -1,4 +1,4 @@
-.signUpForm {
+.LoginForm {
     justify-content: center;
     flex-direction: column;
     padding: 30px;
@@ -72,7 +72,7 @@ button {
     color: rgb(238, 255, 56);
 }
 
-.containerGlass .linkToLogin {
+.containerGlass .linkToSignUp {
     margin-top: 8px;
     display: flex;
     justify-content: center;
