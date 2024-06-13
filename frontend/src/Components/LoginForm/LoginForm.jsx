@@ -72,7 +72,7 @@ function Login() {
 
                     <button type="button" onClick={() => navigate("/")}>Cancel</button>
                 </div>
-                <p className="linkToSignUp">Don't have an account? <Link className="linkToSignOrLogin" to={"/user/signup"}>Register</Link></p>
+                <p className="linkToSignUp">Don't have an account? <Link className="linkToSignOrLogin" to={"/signup"}>Register</Link></p>
             </form >
         </div>
     );
