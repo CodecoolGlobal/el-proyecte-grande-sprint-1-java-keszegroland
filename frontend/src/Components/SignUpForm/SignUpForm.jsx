@@ -101,7 +101,7 @@ function SignUpForm() {
 					<button type="submit">Sign up</button>
 					<button type="button" onClick={() => navigate("/")}>Cancel</button>
 				</div>
-				<p className="linkToLogin">Already have an account?<Link className="linkToSignOrLogin" to={"/user/login"}>Login</Link></p>
+				<p className="linkToLogin">Already have an account?<Link className="linkToSignOrLogin" to={"/login"}>Login</Link></p>
 			</form>
 		</div>
 	);
