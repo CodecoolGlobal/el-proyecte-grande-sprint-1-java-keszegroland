@@ -14,7 +14,7 @@
 }
 
 .onePost {
-    width: 50%;
+    width: 40%;
     height: 50%;
     border: 1px solid black;
     border-radius: 20px;
@@ -32,4 +32,8 @@
 .heart {
     width: 8%;
     height: 8%;
+}
+
+.post {
+    margin-top: 50px;
 }

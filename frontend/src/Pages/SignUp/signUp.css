@@ -76,5 +76,6 @@ body {
 
 .SignUp {
     width: 35%;
+    min-width: 320px;
     position: relative;
 }
