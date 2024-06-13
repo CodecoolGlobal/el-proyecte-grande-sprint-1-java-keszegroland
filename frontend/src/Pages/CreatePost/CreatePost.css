@@ -76,5 +76,6 @@ body {
 
 .CreatePost {
     width: 30%;
+    min-width: 320px;
     position: relative;
 }
