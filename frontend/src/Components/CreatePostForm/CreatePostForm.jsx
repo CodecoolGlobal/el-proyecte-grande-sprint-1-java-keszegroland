@@ -58,8 +58,8 @@ function CreatePostForm() {
 						id="picture"
 					/>
 					<div className="label-container">
-                        <label>Picture</label>
-                    </div>
+						<label>Picture</label>
+					</div>
 					<AiFillPicture className="icon" />
 				</div>
 

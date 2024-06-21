@@ -47,16 +47,7 @@ function Login() {
             <form className="LoginForm" onSubmit={onSubmit}>
                 <h1 id="header">Log in</h1>
                 <p id="sub-header">Please enter your details to access your account.</p>
-                <div className="logo-container">
-                    <img className="sc-logo" alt="google-logo" src="./Assets/google.svg"></img>
-                    <img className="sc-logo" alt="apple-logo" src="./Assets/apple.svg"></img>
-                    <img className="sc-logo" alt="twitter-logo" src="./Assets/twitter.svg"></img>
-                </div>
-                <div className="line-container">
-                    <hr />
-                    <p className="or">OR</p>
-                    <hr />
-                </div>
+
                 <div className="input-box">
                     <input
                         type="text"
@@ -84,7 +75,13 @@ function Login() {
                     </div>
                     <FaLock className="icon" />
                 </div>
-                <button type="submit">Log in</button>
+                <button type="submit">Continue</button>
+                <div className="line-container">
+                    <hr />
+                    <p className="or">OR</p>
+                    <hr />
+                </div>
+                <button className="google"><img className="sc-logo" alt="google-logo" src="./Assets/google.svg"></img><span className="continue-with-google">Continue with Google</span></button>
                 <p className="linkToSignUp">Don't have an account? <Link className="linkToSignOrLogin" to={"/signup"}>Sign up now</Link></p>
             </form >
         </div>

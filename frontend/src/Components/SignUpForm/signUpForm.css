@@ -17,12 +17,7 @@
     display: flex;
     justify-content: left;
     font-size: 15px;
-}
-
-#sub-header {
-    color: rgb(237, 245, 149);
-    margin: 8px 0px 32px 0px;
-    font-size: 15px;
+    color: black;
 }
 
 .name-part {
