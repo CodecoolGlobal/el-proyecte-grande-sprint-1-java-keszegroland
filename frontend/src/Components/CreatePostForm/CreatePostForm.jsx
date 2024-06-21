@@ -57,6 +57,9 @@ function CreatePostForm() {
 						onChange={(e) => setPicture(e.target.value)}
 						id="picture"
 					/>
+					<div className="label-container">
+                        <label>Picture</label>
+                    </div>
 					<AiFillPicture className="icon" />
 				</div>
 

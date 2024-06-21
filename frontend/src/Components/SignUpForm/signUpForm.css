@@ -15,5 +15,28 @@
 .containerGlass .linkToLogin {
     margin-top: 8px;
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    font-size: 15px;
+}
+
+#sub-header {
+    color: rgb(237, 245, 149);
+    margin: 8px 0px 32px 0px;
+    font-size: 15px;
+}
+
+.name-part {
+    display: flex;
+    flex: 1;
+    position: relative;
+    margin-right: 2%;
+}
+
+.name-part:last-child {
+    margin-right: 0;
+}
+
+#full-name {
+    display: flex;
+    justify-content: space-between;
 }
