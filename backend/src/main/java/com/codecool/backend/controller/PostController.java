@@ -24,13 +24,13 @@ public class PostController {
         return postService.getAllPosts();
     }
 
-    @GetMapping("/{userID}")
-    public List<PostDTO> getAllPostsByUserId(@PathVariable int userID) {
-        return postService.getAllPostsByUserId(userID);
+    @GetMapping("/{userId}")
+    public List<PostDTO> getAllPostsByUserId(@PathVariable int userId) {
+        return postService.getAllPostsByUserId(userId);
     }
 
-    @PostMapping("/{user_id}")
-    public boolean createPost(@PathVariable int user_id, @RequestBody NewPostDTO postDTO) {
-        return  postService.createNewPost(postDTO, user_id);
+    @PostMapping("/{userId}")
+    public boolean createPost(@PathVariable int userId, @RequestBody NewPostDTO postDTO) {
+        return  postService.createNewPost(postDTO, userId);
     }
 }

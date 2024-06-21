@@ -6,6 +6,7 @@ import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.dao.PostDAO;
 import com.codecool.backend.dao.model.MainPagePost;
 import com.codecool.backend.dao.model.Post;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
 public class PostService {
     private PostDAO postDAO;
 
+    @Autowired
     public PostService(PostDAO postDAO) {
         this.postDAO = postDAO;
     }
@@ -35,11 +37,11 @@ public class PostService {
     }
 
     private PostDTO convertPostToPostDTO(Post post) {
-        return new PostDTO(post.post_id(), post.user_id(), post.description(), post.picture(), post.creation_date());
+        return new PostDTO(post.postId(), post.userId(), post.description(), post.picture(), post.creationDate());
     }
 
     private MainPostDTO convertMainPagePostToMainPostDTO(MainPagePost post) {
-        return new MainPostDTO(post.username(), post.description(), post.picture(), post.creation_date());
+        return new MainPostDTO(post.username(), post.description(), post.picture(), post.creationDate());
     }
 
 }

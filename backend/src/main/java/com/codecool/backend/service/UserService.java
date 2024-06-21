@@ -32,6 +32,6 @@ public class UserService {
     }
 
     private UserDTO convertUserToDTO(User user) {
-        return new UserDTO(user.userId(), user.firstName(), user.lastName(), user.username(), user.password(), user.email());
+        return new UserDTO(user.userId(), user.firstName(), user.lastName(), user.username(), user.email());
     }
 }
