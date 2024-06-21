@@ -45,7 +45,18 @@ function Login() {
     return (
         <div className="containerGlass">
             <form className="LoginForm" onSubmit={onSubmit}>
-                <h1 id="header">Login</h1>
+                <h1 id="header">Log in</h1>
+                <p id="sub-header">Please enter your details to access your account.</p>
+                <div className="logo-container">
+                    <img className="sc-logo" alt="google-logo" src="./Assets/google.svg"></img>
+                    <img className="sc-logo" alt="apple-logo" src="./Assets/apple.svg"></img>
+                    <img className="sc-logo" alt="twitter-logo" src="./Assets/twitter.svg"></img>
+                </div>
+                <div className="line-container">
+                    <hr />
+                    <p className="or">OR</p>
+                    <hr />
+                </div>
                 <div className="input-box">
                     <input
                         type="text"
@@ -54,6 +65,9 @@ function Login() {
                         onChange={(e) => setUsername(e.target.value)}
                         id="username"
                     />
+                    <div className="label-container">
+                        <label>Username</label>
+                    </div>
                     <FaUser className="icon" />
                 </div>
 
@@ -65,15 +79,13 @@ function Login() {
                         onChange={(e) => setPassword(e.target.value)}
                         id="password"
                     />
+                    <div className="label-container">
+                        <label>Password</label>
+                    </div>
                     <FaLock className="icon" />
                 </div>
-
-                <div className="buttons">
-                    <button type="submit">Login</button>
-
-                    <button type="button" onClick={() => navigate("/")}>Cancel</button>
-                </div>
-                <p className="linkToSignUp">Don't have an account? <Link className="linkToSignOrLogin" to={"/signup"}>Register</Link></p>
+                <button type="submit">Log in</button>
+                <p className="linkToSignUp">Don't have an account? <Link className="linkToSignOrLogin" to={"/signup"}>Sign up now</Link></p>
             </form >
         </div>
     );

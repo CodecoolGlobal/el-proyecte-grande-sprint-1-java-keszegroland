@@ -43,26 +43,35 @@ function SignUpForm() {
 	return (
 		<div className="containerGlass">
 			<form className="signUpForm" onSubmit={handleCreateUser}>
-				<h1 id="header">Sign Up</h1>
-				<div className="input-box">
-					<input
-						type="text"
-						value={firstName}
-						placeholder="First Name"
-						required
-						onChange={(e) => setFirstName(e.target.value)}
-						id="firstName"
-					/>
-				</div>
-				<div className="input-box">
-					<input
-						type="text"
-						value={lastName}
-						placeholder="Last Name"
-						required
-						onChange={(e) => setLastName(e.target.value)}
-						id="lastName"
-					/>
+				<h1 id="header">Sign up</h1>
+				<p id="sub-header">Create your account in seconds</p>
+				<div className="input-box" id="full-name">
+					<div className="name-part">
+						<input
+							type="text"
+							value={firstName}
+							placeholder="First Name"
+							required
+							onChange={(e) => setFirstName(e.target.value)}
+							id="firstName"
+						/>
+						<div className="label-container">
+							<label>First Name</label>
+						</div>
+					</div>
+					<div className="name-part">
+						<input
+							type="text"
+							value={lastName}
+							placeholder="Last Name"
+							required
+							onChange={(e) => setLastName(e.target.value)}
+							id="lastName"
+						/>
+						<div className="label-container">
+							<label>Last Name</label>
+						</div>
+					</div>
 				</div>
 				<div className="input-box">
 					<input
@@ -73,18 +82,10 @@ function SignUpForm() {
 						onChange={(e) => setUsername(e.target.value)}
 						id="username"
 					/>
+					<div className="label-container">
+						<label>Username</label>
+					</div>
 					<FaUser className="icon" />
-				</div>
-				<div className="input-box">
-					<input
-						type="password"
-						value={password}
-						placeholder="Password"
-						required
-						onChange={(e) => setPassword(e.target.value)}
-						id="password"
-					/>
-					<FaLock className="icon" />
 				</div>
 				<div className="input-box">
 					<input
@@ -95,14 +96,28 @@ function SignUpForm() {
 						onChange={(e) => setEmail(e.target.value)}
 						id="email"
 					/>
+					<div className="label-container">
+						<label>Email Address</label>
+					</div>
 					<MdAlternateEmail className="icon" />
 				</div>
-
-				<div className="buttons">
-					<button type="submit">Sign up</button>
-					<button type="button" onClick={() => navigate("/")}>Cancel</button>
+				<div className="input-box">
+					<input
+						type="password"
+						value={password}
+						placeholder="Password"
+						required
+						onChange={(e) => setPassword(e.target.value)}
+						id="password"
+					/>
+					<div className="label-container">
+						<label>Password</label>
+					</div>
+					<FaLock className="icon" />
 				</div>
-				<p className="linkToLogin">Already have an account?<Link className="linkToSignOrLogin" to={"/login"}>Login</Link></p>
+				<button type="submit">Create an account</button>
+
+				<p className="linkToLogin">Already have an account?<Link className="linkToSignOrLogin" to={"/login"}>Log in</Link></p>
 			</form>
 		</div>
 	);
