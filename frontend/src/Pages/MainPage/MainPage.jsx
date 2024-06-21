@@ -3,7 +3,7 @@ import Post from "../../Components/Post/Post";
 import "./MainPage.css";
 import { FaHome, FaUserTie } from "react-icons/fa";
 import { IoCreate } from "react-icons/io5";
-import logo from "C:/codecool/PROJECTS/TW_het_1/el-proyecte-grande-sprint-1-java-keszegroland/frontend/src/logoo.png";
+import logo from "../../logoo.png";
 import { useEffect, useState } from "react";
 
 function MainPage() {
