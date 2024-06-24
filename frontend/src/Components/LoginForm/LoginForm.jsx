@@ -38,6 +38,11 @@ function Login() {
         });
     };
 
+    const handleGoogleLogin = (e) => {
+        e.preventDefault();
+        navigate("/");
+    };
+
     if (loading) {
         return <Loading />
     }
@@ -81,7 +86,7 @@ function Login() {
                     <p className="or">OR</p>
                     <hr />
                 </div>
-                <button className="google"><img className="sc-logo" alt="google-logo" src="./Assets/google.svg"></img><span className="continue-with-google">Continue with Google</span></button>
+                <button onClick={handleGoogleLogin} className="google"><img className="sc-logo" alt="google-logo" src="./Assets/google.svg"></img><span className="continue-with-google">Continue with Google</span></button>
                 <p className="linkToSignUp">Don't have an account? <Link className="linkToSignOrLogin" to={"/signup"}>Sign up now</Link></p>
             </form >
         </div>

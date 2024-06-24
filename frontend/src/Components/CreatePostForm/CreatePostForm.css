@@ -7,6 +7,7 @@
 #description {
     width: 100%;
     height: 100%;
+    max-width: 100%;
     background: transparent;
     border: none;
     outline: none;
@@ -18,7 +19,7 @@
     height: 150px;
 }
 
-.textAreaInput ::placeholder {
-    color: rgb(95, 95, 95);
+#description::placeholder {
+    color: rgb(88, 88, 88);
     font-size: 16px;
 }

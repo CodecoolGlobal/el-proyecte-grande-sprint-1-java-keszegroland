@@ -3,83 +3,10 @@
 html,
 body {
   font-family: "Quicksand", Arial, Helvetica, sans-serif;
-  color: black;
   margin: 0;
   padding: 0;
-  height: 100vh;
-  width: 100vw;
-  overflow: hidden;
 }
 
 * {
   box-sizing: border-box;
-}
-
-.wrapper {
-  width: 100vw;
-  height: 100vh;
-  align-items: center;
-  color: white;
-  justify-content: center;
-  display: flex;
-  background-color: #ffaf99;
-  background-size: cover;
-  background-position: center;
-  background-image:
-    radial-gradient(at 64% 52%, hsla(280, 98%, 72%, 1) 0px, transparent 50%),
-    radial-gradient(at 7% 66%, hsla(109, 87%, 76%, 1) 0px, transparent 50%),
-    radial-gradient(at 67% 1%, hsla(234, 93%, 60%, 1) 0px, transparent 50%),
-    radial-gradient(at 32% 70%, hsla(258, 85%, 62%, 1) 0px, transparent 50%),
-    radial-gradient(at 80% 20%, hsla(300, 75%, 79%, 1) 0px, transparent 50%),
-    radial-gradient(at 2% 14%, hsla(180, 79%, 65%, 1) 0px, transparent 50%),
-    radial-gradient(at 30% 43%, hsla(139, 68%, 71%, 1) 0px, transparent 50%);
-  background-size: 160% 160%;
-  animation: moveBackground 20s linear infinite;
-}
-
-@keyframes moveBackground {
-  0% {
-    background-position: 0% 0%;
-  }
-
-  10% {
-    background-position: 25% 75%;
-  }
-
-  20% {
-    background-position: 50% 25%;
-  }
-
-  30% {
-    background-position: 75% 50%;
-  }
-
-  40% {
-    background-position: 100% 75%;
-  }
-
-  50% {
-    background-position: 50% 50%;
-  }
-
-  60% {
-    background-position: 75% 100%;
-  }
-
-  70% {
-    background-position: 25% 0%;
-  }
-
-  80% {
-    background-position: 50% 75%;
-  }
-
-  90% {
-    background-position: 75% 25%;
-  }
-
-  100% {
-    background-position: 0% 0%;
-  }
-
 }

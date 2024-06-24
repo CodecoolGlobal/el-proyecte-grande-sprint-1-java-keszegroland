@@ -4,6 +4,7 @@ import "../FormStyling.css";
 import Loading from "../Loading/Loading";
 import { useNavigate } from "react-router";
 import { AiFillPicture } from "react-icons/ai";
+import FileUploader from "./FileUploader/FileUploader";
 
 function createPost(post, userId) {
 	return fetch(`/api/posts/${userId}`, {
@@ -49,7 +50,7 @@ function CreatePostForm() {
 						id="description"
 					/>
 				</div>
-				<div className="input-box">
+{/* 				<div className="input-box">
 					<input
 						type="text"
 						value={picture}
@@ -61,7 +62,8 @@ function CreatePostForm() {
 						<label>Picture</label>
 					</div>
 					<AiFillPicture className="icon" />
-				</div>
+				</div> */}
+				<FileUploader />
 
 				<div className="buttons">
 					<button type="submit">Create Post</button>
