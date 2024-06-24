@@ -1,0 +1,41 @@
+.file_uploader_container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    border: 2px solid rgb(204, 204, 204);
+    border-radius: 16px;
+    font-size: 18px;
+    outline: none;
+    background: transparent;
+    margin-top: 20px;
+    flex-direction: column;
+}
+
+.file_uploader_container .drag-photo-text {
+    margin: 0;
+    margin-bottom: 2px;
+    margin-top: 13px;
+    font-size: 18px;
+}
+
+
+.file_uploader_container .file-format-text {
+    margin: 0;
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+.file_uploader_container .select-from-computer-button {
+    all: unset;
+    border: 2px solid rgb(204, 204, 204);
+    outline: none;
+    background: rgb(146, 146, 146);
+    border-radius: 12px;
+    font-size: 15px;
+    padding: 10px;
+    margin-top: 16px;
+    color: white;
+    font-weight: bold;
+}

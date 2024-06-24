@@ -27,7 +27,7 @@ function Post() {
 	}
 
 	if (loading) {
-		<Loading />
+		return <Loading />
 	}
 
 	return (
