@@ -31,24 +31,25 @@ function Post() {
 	}
 
 	return (
-		<div className="post">
+		<div className="posts">
 			{posts.map(post => (
 				<div key={post.creation_date} className="onePost">
-					<div className="postContent">
-						<p className="username"><b>{post.username}</b></p>
+					{/* <div className="postContent"> */}
+					<p className="username"><b>{post.username}</b><span>{post.creationDate.split('T').join(' ').slice(5, -10)}</span></p>
+					<div className="photoDiv">
 						<img
 							className="images"
 							src={post.picture}
-							alt="Kiselefánt" />
-						<Like />
-						<div>{post.creationDate.split('T').join(' ').slice(0, -10)}</div>
-						<p>{post.description}</p>
-						<form>
-							<input className="commentHere" placeholder="Comment here" name="comment" />
-							{<FaRegPaperPlane onClick={handlePostComment} />}
-						</form>
-						<p>View all comments</p>
+							alt={post.description} />
 					</div>
+					<Like />
+					<p><b className="descUser">{post.username}: </b>{post.description}</p>
+					<form>
+						<input className="commentHere" placeholder="Comment here" name="comment" />
+						{<FaRegPaperPlane onClick={handlePostComment} />}
+					</form>
+					<p>View all comments</p>
+					{/* </div> */}
 				</div>
 
 			))}

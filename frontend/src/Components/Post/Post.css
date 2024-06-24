@@ -1,39 +1,76 @@
-.images {
-    width: 300px;
-    height: 300px;
-    object-fit: cover;
-    object-position: 25% 25%;
-}
-
-.postContent {
-    width: 50%;
-    height: 50%;
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-}
-
 .onePost {
-    width: 40%;
-    height: 50%;
+    max-width: 483px;
+    max-height: 70%;
     border: 1px solid black;
-    border-radius: 20px;
     margin: 20px;
-    margin-left: auto;
-    margin-right: auto;
+    display: flex;
+    flex-direction: column;
 }
+
+.photoDiv {
+    overflow: hidden;
+    height: 650px;
+    justify-content: center;
+    display: flex;
+
+}
+
+.images {
+    max-width: 100%;
+    max-height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 2000px) {
+    .onePost {
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 1200px) {
+    .onePost {
+        width: 40%;
+        margin-left: 40%;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .onePost {
+        width: 50%;
+        margin-left: 35%;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .onePost {
+        width: 60%;
+        margin-left: 30%;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .onePost {
+        width: unset;
+        margin: 20px;
+    }
+}
+
 
 .commentHere {
     border: none;
+    width: 92%;
     border-bottom: 1px solid black;
+    background-color: white;
 }
 
 
 .heart {
-    width: 8%;
-    height: 8%;
-}
-
-.post {
-    margin-top: 50px;
+    width: 35px;
+    height: 35px;
 }
