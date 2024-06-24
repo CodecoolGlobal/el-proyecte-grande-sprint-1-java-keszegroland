@@ -10,23 +10,15 @@
     background: transparent;
     border: none;
     outline: none;
-    border: 2px solid rgba(255, 255, 255, .2);
-    border-radius: 40px;
-    color: white;
+    border: 2px solid rgb(204, 204, 204);
+    border-radius: 16px;
+    color: black;
     font-size: 16px;
     padding: 20px 55px 20px 20px;
     height: 150px;
 }
 
 .textAreaInput ::placeholder {
-    color: rgb(242, 242, 242);
-}
-
-
-.inputBox .icon {
-    position: absolute;
-    right: 20px;
-    top: 50%;
-    transform: translateY(-50%);
+    color: rgb(95, 95, 95);
     font-size: 16px;
 }
