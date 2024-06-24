@@ -1,3 +1,11 @@
+.MainPage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: white;
+
+}
+
 .logo {
     margin-top: 5px;
     margin-left: 5px;
@@ -6,9 +14,11 @@
     border-radius: 50%;
     position: absolute;
     top: 0;
+    z-index: 2;
 }
 
 .strings {
+    color: white;
     font-size: 30px;
     font-weight: bold;
     top: 0;
@@ -17,31 +27,23 @@
     margin-left: 70px;
     margin-top: 10px;
     font-size: 30px;
+    z-index: 2;
+}
+
+.blob {
+    width: 350px;
+    height: 200px;
+    position: absolute;
+    margin-top: -75px;
+    margin-left: -55px;
+    z-index: 1;
 }
 
 
-
 @media (min-width: 576px) {
-    .signupEmblem {
-        padding: 5px;
-        font-size: 30px;
-        cursor: pointer;
-        text-decoration: none;
-        color: black;
-        display: block;
-        flex-direction: column;
-    }
 
-    .homeEmblem {
-        padding: 5px;
-        font-size: 30px;
-        cursor: pointer;
-        text-decoration: none;
-        color: black;
-        display: block;
-        flex-direction: column;
-    }
-
+    .signupEmblem,
+    .homeEmblem,
     .createAnswerEmblem {
         padding: 5px;
         font-size: 30px;
@@ -55,11 +57,11 @@
     .links {
         margin-top: 120px;
         width: 30%;
+        height: 100vh;
         display: flex;
         position: fixed;
         top: 0;
         flex-direction: column;
-        justify-content: space-between;
     }
 
     .linkDiv {
@@ -69,31 +71,10 @@
     }
 }
 
-
-
 @media (max-width: 576px) {
-    .signupEmblem {
-        padding: 5px;
-        left: 0;
-        font-size: 30px;
-        cursor: pointer;
-        text-decoration: none;
-        color: black;
-        flex-direction: row;
-        text-wrap: wrap;
-    }
 
-    .homeEmblem {
-        padding: 5px;
-        left: 0;
-        font-size: 30px;
-        cursor: pointer;
-        text-decoration: none;
-        color: black;
-        flex-direction: row;
-        text-wrap: wrap;
-    }
-
+    .signupEmblem,
+    .homeEmblem,
     .createAnswerEmblem {
         padding: 5px;
         left: 0;
@@ -102,7 +83,7 @@
         text-decoration: none;
         color: black;
         flex-direction: row;
-        text-wrap: nowrap;
+        text-wrap: wrap;
     }
 
     .links {
@@ -124,18 +105,39 @@
         text-overflow: ellipsis;
     }
 
+    .strings {
+        font-size: 25px;
+        margin-left: 60px;
+        margin-top: 7px;
+    }
+
+    .logo {
+        margin-top: 5px;
+        width: 50px;
+        height: 50px;
+    }
+
+    .blob {
+        width: 300px;
+        height: 170px;
+    }
+
 }
 
 .watermark {
     position: fixed;
-    background-color: white;
     top: 0;
     width: 100vw;
-    height: 70px;
+    height: 80px;
     display: flex;
     flex-direction: row;
+    z-index: 5;
 }
 
 .mainpagePosts {
-    margin-top: 70px;
+    position: relative;
+    flex-grow: 1;
+    margin-top: 75px;
+    z-index: 0;
+    overflow: hidden;
 }

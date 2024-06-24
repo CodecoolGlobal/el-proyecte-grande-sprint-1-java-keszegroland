@@ -3,7 +3,8 @@ import Post from "../../Components/Post/Post";
 import "./MainPage.css";
 import { FaHome, FaUserTie } from "react-icons/fa";
 import { IoCreate } from "react-icons/io5";
-import logo from "../../logoo.png";
+import logo from "../../logo.png";
+import blob from "../../blob-1-opacity-100.gif";
 import { useEffect, useState } from "react";
 
 function MainPage() {
@@ -23,10 +24,9 @@ function MainPage() {
             <div className="watermark">
                 <img className="logo" src={logo} alt="logo"></img>
                 <p className="strings">Strings</p>
+                <img className="blob" src={blob} alt="gif"></img>
             </div>
-            <div className="mainpagePosts">
-                <Post />
-            </div>
+            <Post />
             <div className="links">
                 <div className="linkDiv"><Link to={'/'} className='homeEmblem'><FaHome className="homepage-icon" /><span className="link-text">{innerWidth > 576 ? "Home page" : ""}</span></Link></div>
                 <div className="linkDiv"><Link to={'/signup'} className='signupEmblem'><FaUserTie /><span className="link-text">{innerWidth > 576 ? "Sign up" : ""}</span></Link></div>

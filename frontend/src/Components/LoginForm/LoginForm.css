@@ -6,10 +6,9 @@
 
 .containerGlass .linkToSignOrLogin {
     text-decoration: none;
-    color: white;
+    color: black;
     font-weight: bolder;
     padding-left: 5px;
-    color: black;
 }
 
 .containerGlass .linkToSignUp {
@@ -17,7 +16,6 @@
     display: flex;
     justify-content: left;
     font-size: 15px;
-    color: black;
 }
 
 .line-container {
@@ -33,7 +31,6 @@
 .line-container .or {
     margin: 0 10px;
     white-space: nowrap;
-    color: black;
 }
 
 .logo-container {
@@ -67,6 +64,6 @@
     vertical-align: middle;
 }
 
-.google:hover{
+.google:hover {
     color: white;
 }
