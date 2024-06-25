@@ -3,7 +3,6 @@ package com.codecool.backend.dao;
 import com.codecool.backend.configuration.DatabaseConnection;
 import com.codecool.backend.controller.dto.NewUserDTO;
 import com.codecool.backend.controller.dto.UserLoginDTO;
-import com.codecool.backend.dao.model.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

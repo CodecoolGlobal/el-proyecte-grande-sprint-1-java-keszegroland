@@ -5,7 +5,6 @@ import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.dao.PostDAO;
 import com.codecool.backend.dao.model.MainPagePost;
-import com.codecool.backend.dao.model.Post;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

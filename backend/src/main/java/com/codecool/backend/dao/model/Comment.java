@@ -13,7 +13,7 @@ public class Comment {
     private String comment;
     @ManyToOne
     private Post post;
-    @OneToOne
+    @ManyToOne
     private User user;
 
     public UUID getCommentPublicId() {
