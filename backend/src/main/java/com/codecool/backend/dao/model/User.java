@@ -1,4 +1,88 @@
 package com.codecool.backend.dao.model;
 
-public record User(int userId, String firstName, String lastName, String username, String password, String email) {
+import jakarta.persistence.*;
+
+import java.util.List;
+import java.util.UUID;
+
+@Entity
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long userId;
+    private UUID publicId = UUID.randomUUID();
+    private String firstName;
+    private String lastName;
+    private String username;
+    private String password;
+    private String email;
+
+    @OneToMany
+    @JoinColumn
+    private List<Post> postEntityList;
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public UUID getPublicId() {
+        return publicId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public List<Post> getPostEntityList() {
+        return postEntityList;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
+    }
+
+    public void setPublicId(UUID publicId) {
+        this.publicId = publicId;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void addToPostEntityList(Post post) {
+        postEntityList.add(post);
+    }
 }
