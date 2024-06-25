@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import Dropzone, { useDropzone } from 'react-dropzone';
-import "./FileUploader.css";
+import "./fileUploader.css";
 
 function FileUploader() {
 	const [fileUrl, setFileUrl] = useState("");

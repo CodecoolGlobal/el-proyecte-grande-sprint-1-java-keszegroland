@@ -3,8 +3,7 @@ package com.codecool.backend.service;
 import com.codecool.backend.controller.dto.NewUserDTO;
 import com.codecool.backend.controller.dto.UserDTO;
 import com.codecool.backend.controller.dto.UserLoginDTO;
-import com.codecool.backend.dao.UserDAO;
-import com.codecool.backend.dao.model.User;
+import com.codecool.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
