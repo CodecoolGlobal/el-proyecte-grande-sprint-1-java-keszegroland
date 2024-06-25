@@ -7,6 +7,8 @@ import com.codecool.backend.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
@@ -17,18 +19,18 @@ public class UserController {
         this.userService = userService;
     }
 
-/*    @GetMapping("/{id}")
-    public UserDTO getUser(@PathVariable int id) {
+    @GetMapping("/{id}")
+    public UserDTO getUser(@PathVariable UUID id) {
         return userService.getUserById(id);
     }
 
     @PostMapping("/signUp")
-    public boolean signUp(@RequestBody NewUserDTO user) {
+    public UUID signUp(@RequestBody NewUserDTO user) {
         return userService.createNewUser(user);
     }
 
     @PostMapping("/login")
     public UserDTO loginUser(@RequestBody UserLoginDTO user) {
         return userService.loginUser(user);
-    }*/
+    }
 }

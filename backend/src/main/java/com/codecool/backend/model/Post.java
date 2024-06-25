@@ -13,7 +13,8 @@ public class Post {
     private long id;
     private UUID publicId;
     @ManyToOne
-    private User user;
+    @JoinColumn
+    private AppUser user;
     private String description;
     private String picture;
     private LocalDateTime creationDate;
@@ -27,7 +28,7 @@ public class Post {
         return publicId;
     }
 
-    public User getUser() {
+    public AppUser getUser() {
         return user;
     }
 
