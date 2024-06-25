@@ -2,6 +2,7 @@ package com.codecool.backend.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -11,10 +12,13 @@ public class Comment {
     private long commentId;
     private UUID CommentPublicId = UUID.randomUUID();
     private String comment;
+    private LocalDateTime creationDate;
     @ManyToOne
+    @JoinColumn
     private Post post;
     @ManyToOne
-    private User user;
+    @JoinColumn
+    private AppUser user;
 
     public UUID getCommentPublicId() {
         return CommentPublicId;
@@ -28,11 +32,15 @@ public class Comment {
         return comment;
     }
 
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
     public Post getPost() {
         return post;
     }
 
-    public User getUser() {
+    public AppUser getUser() {
         return user;
     }
 
@@ -44,6 +52,10 @@ public class Comment {
         this.comment = comment;
     }
 
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
     public void setPost(Post post) {
         this.post = post;
     }
@@ -52,7 +64,7 @@ public class Comment {
         this.CommentPublicId = CommentPublicId;
     }
 
-    public void setUser(User user) {
+    public void setUser(AppUser user) {
         this.user = user;
     }
 }
