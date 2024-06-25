@@ -34,3 +34,4 @@ public class PostController {
         return  postService.createNewPost(postDTO, userId);
     }*/
 }
+

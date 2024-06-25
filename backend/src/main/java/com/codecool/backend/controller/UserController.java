@@ -17,7 +17,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/{id}")
+/*    @GetMapping("/{id}")
     public UserDTO getUser(@PathVariable int id) {
         return userService.getUserById(id);
     }
@@ -30,5 +30,5 @@ public class UserController {
     @PostMapping("/login")
     public UserDTO loginUser(@RequestBody UserLoginDTO user) {
         return userService.loginUser(user);
-    }
+    }*/
 }

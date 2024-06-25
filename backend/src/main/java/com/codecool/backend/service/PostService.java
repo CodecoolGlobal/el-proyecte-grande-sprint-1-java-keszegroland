@@ -22,7 +22,7 @@ public class PostService {
 
     private List<MainPostDTO> getAllPosts(){
         List<Post> posts = postRepository.findAll();
-        return;
+        return null;
     }
 
 }
