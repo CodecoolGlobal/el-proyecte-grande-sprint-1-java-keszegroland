@@ -1,5 +1,5 @@
 import CreatePostForm from "../../Components/CreatePostForm/CreatePostForm.jsx";
-import "./CreatePost.css";
+import "./createPost.css";
 
 function CreatePost() {
 

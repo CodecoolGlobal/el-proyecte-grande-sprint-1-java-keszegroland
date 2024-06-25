@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import "./Post.css";
+import "./post.css";
 import { FaRegPaperPlane } from "react-icons/fa";
 import Like from "./Like";
 import Loading from "../Loading/Loading";
