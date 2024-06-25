@@ -3,9 +3,8 @@ package com.codecool.backend.service;
 import com.codecool.backend.controller.dto.NewUserDTO;
 import com.codecool.backend.controller.dto.UserDTO;
 import com.codecool.backend.controller.dto.UserLoginDTO;
-import com.codecool.backend.dao.UserDAO;
-import com.codecool.backend.dao.model.User;
 import com.codecool.backend.repository.UserRepository;
+import com.codecool.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +19,7 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public UserDTO getUserById(long userId) {
+/*    public UserDTO getUserById(long userId) {
         Optional<User> user = userRepository.findById(userId);
         return convertUserToDTO(user.get());
     }
@@ -36,5 +35,5 @@ public class UserService {
 
     private UserDTO convertUserToDTO(User user) {
         return new UserDTO(user.userId(), user.firstName(), user.lastName(), user.username(), user.email());
-    }
+    }*/
 }

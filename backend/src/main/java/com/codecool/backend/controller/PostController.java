@@ -19,7 +19,7 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping
+/*    @GetMapping
     public List<MainPostDTO> getAllPosts() {
         return postService.getAllPosts();
     }
@@ -32,5 +32,6 @@ public class PostController {
     @PostMapping("/{userId}")
     public boolean createPost(@PathVariable int userId, @RequestBody NewPostDTO postDTO) {
         return  postService.createNewPost(postDTO, userId);
-    }
+    }*/
 }
+
