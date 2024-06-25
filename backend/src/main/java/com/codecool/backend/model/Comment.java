@@ -2,6 +2,7 @@ package com.codecool.backend.model;
 
 import jakarta.persistence.*;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -15,6 +16,7 @@ public class Comment {
     private Post post;
     @ManyToOne
     private User user;
+    private LocalDateTime creationDate;
 
     public UUID getCommentPublicId() {
         return CommentPublicId;
@@ -36,6 +38,10 @@ public class Comment {
         return user;
     }
 
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
     public void setCommentId(long commentId) {
         this.commentId = commentId;
     }
@@ -54,5 +60,9 @@ public class Comment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 }
