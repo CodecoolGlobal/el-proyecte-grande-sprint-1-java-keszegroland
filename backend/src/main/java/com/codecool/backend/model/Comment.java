@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
+@Table(name = "users")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,7 +19,7 @@ public class Comment {
     private Post post;
     @ManyToOne
     @JoinColumn
-    private AppUser user;
+    private User user;
 
     public UUID getCommentPublicId() {
         return CommentPublicId;
@@ -40,7 +41,7 @@ public class Comment {
         return post;
     }
 
-    public AppUser getUser() {
+    public User getUser() {
         return user;
     }
 
@@ -64,7 +65,7 @@ public class Comment {
         this.CommentPublicId = CommentPublicId;
     }
 
-    public void setUser(AppUser user) {
+    public void setUser(User user) {
         this.user = user;
     }
 }
