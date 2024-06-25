@@ -17,10 +17,13 @@ public class User {
     private String username;
     private String password;
     private String email;
+    @OneToMany
+    @JoinColumn
+    private List<Comment> comments;
 
     @OneToMany
     @JoinColumn
-    private List<Post> postEntityList;
+    private List<Post> posts;
 
     public long getUserId() {
         return userId;
@@ -50,8 +53,12 @@ public class User {
         return email;
     }
 
-    public List<Post> getPostEntityList() {
-        return postEntityList;
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
     }
 
     public void setUserId(long userId) {
@@ -82,7 +89,12 @@ public class User {
         this.email = email;
     }
 
-    public void addToPostEntityList(Post post) {
-        postEntityList.add(post);
+    public void addToPosts(Post post) {
+        posts.add(post);
     }
+
+    public void addToComments(Comment comment) {
+        comments.add(comment);
+    }
+
 }
