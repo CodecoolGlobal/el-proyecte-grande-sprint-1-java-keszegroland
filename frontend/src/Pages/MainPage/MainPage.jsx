@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import Post from "../../Components/Post/Post";
-import "./MainPage.css";
+import "./mainPage.css";
 import { FaHome, FaUserTie } from "react-icons/fa";
 import { IoCreate } from "react-icons/io5";
 import logo from "../../logo.png";
