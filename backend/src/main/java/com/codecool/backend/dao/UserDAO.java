@@ -2,7 +2,6 @@ package com.codecool.backend.dao;
 
 import com.codecool.backend.controller.dto.NewUserDTO;
 import com.codecool.backend.controller.dto.UserLoginDTO;
-import com.codecool.backend.dao.model.User;
 
 
 public interface UserDAO {

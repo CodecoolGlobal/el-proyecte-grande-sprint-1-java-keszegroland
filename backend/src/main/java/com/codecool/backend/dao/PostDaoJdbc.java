@@ -3,7 +3,6 @@ package com.codecool.backend.dao;
 import com.codecool.backend.configuration.DatabaseConnection;
 import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.dao.model.MainPagePost;
-import com.codecool.backend.dao.model.Post;
 
 import java.sql.*;
 import java.time.LocalDateTime;
