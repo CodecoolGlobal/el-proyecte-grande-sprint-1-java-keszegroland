@@ -2,23 +2,41 @@
     max-width: 483px;
     max-height: 70%;
     border: 1px solid black;
-    margin: 20px;
+    margin: 20px auto;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    border: 2px solid;
+    border-image: conic-gradient(from var(--angle), hsla(139, 68%, 71%, 1), hsla(280, 98%, 72%, 1), hsla(300, 75%, 79%, 1), hsla(13, 100%, 80%, 1),
+            hsla(258, 85%, 62%, 1), hsla(234, 93%, 60%, 1), hsla(180, 79%, 65%, 1), hsla(139, 68%, 71%, 1)) 1;
+    animation: 10s rotate linear infinite;
+}
+
+@keyframes rotate {
+    to {
+        --angle: 360deg;
+    }
+}
+
+@property --angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
 }
 
 .photoDiv {
+    flex: 1;
     overflow: hidden;
     height: 650px;
     justify-content: center;
     display: flex;
-
+    align-items: center;
+    position: relative;
 }
 
 .images {
-    max-width: 100%;
-    max-height: 100%;
     width: 100%;
+    height: auto;
     object-fit: cover;
 }
 
