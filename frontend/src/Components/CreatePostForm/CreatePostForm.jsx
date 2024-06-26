@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./createPostForm.css";
-import "../formStyling.css";
+import "./CreatePostForm.css";
+import "../FormStyling.css";
 import Loading from "../Loading/Loading";
 import { useNavigate } from "react-router";
 import { AiFillPicture } from "react-icons/ai";

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { PiHeartThin } from "react-icons/pi";
 import { FcLike } from "react-icons/fc";
-import "./post.css";
+import "./Post.css";
 
 
 
