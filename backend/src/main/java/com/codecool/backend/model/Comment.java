@@ -15,10 +15,10 @@ public class Comment {
     private String comment;
     private LocalDateTime creationDate;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "postId")
     private Post post;
     @ManyToOne
-    @JoinColumn
+    @JoinColumn(name = "userId")
     private User user;
 
     public UUID getCommentPublicId() {

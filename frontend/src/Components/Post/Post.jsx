@@ -3,6 +3,7 @@ import "./Post.css";
 import { FaRegPaperPlane } from "react-icons/fa";
 import Like from "./Like";
 import Loading from "../Loading/Loading";
+import { formatDistanceToNowStrict } from 'date-fns';
 
 const fetchPosts = () => {
 	return fetch('/api/posts').then(res => res.json());
@@ -35,7 +36,7 @@ function Post() {
 			{posts.map(post => (
 				<div key={post.creationDate} className="onePost">
 					{/* <div className="postContent"> */}
-					<p className="username"><b>{post.username}</b><span>{post.creationDate.split('T').join(' ').slice(5, -10)}</span></p>
+					<p className="username"><b>{post.username}</b> ~ <i><span>{formatDistanceToNowStrict(post.creationDate)}</span> ago</i></p>
 					<div className="photoDiv">
 						<img
 							className="images"

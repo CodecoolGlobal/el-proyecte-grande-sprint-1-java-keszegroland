@@ -6,8 +6,8 @@ import { useNavigate } from "react-router";
 import { AiFillPicture } from "react-icons/ai";
 import FileUploader from "./FileUploader/FileUploader";
 
-function createPost(post, userId) {
-	return fetch(`/api/posts/${userId}`, {
+function createPost(post, userPublicId) {
+	return fetch(`/api/posts/${userPublicId}`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json", },
 		body: JSON.stringify(post),
@@ -17,7 +17,7 @@ function createPost(post, userId) {
 function CreatePostForm() {
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
-	const userId = 7;
+	const userId = "c76dc986-4094-4fd7-bc95-487b72dd9727";
 	const [description, setDescription] = useState("");
 	const [picture, setPicture] = useState("");
 
@@ -50,7 +50,7 @@ function CreatePostForm() {
 						id="description"
 					/>
 				</div>
-				{/* 				<div className="input-box">
+				<div className="input-box">
 					<input
 						type="text"
 						value={picture}
@@ -62,7 +62,7 @@ function CreatePostForm() {
 						<label>Picture</label>
 					</div>
 					<AiFillPicture className="icon" />
-				</div> */}
+				</div>
 				<FileUploader />
 
 				<div className="buttons">
