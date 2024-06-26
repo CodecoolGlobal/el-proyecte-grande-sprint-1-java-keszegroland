@@ -18,10 +18,10 @@ public class User {
     private String username;
     private String password;
     private String email;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts;
 
     public long getUserId() {
@@ -86,14 +86,6 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void addToPosts(Post post) {
-        posts.add(post);
-    }
-
-    public void addToComments(Comment comment) {
-        comments.add(comment);
     }
 
 }

@@ -1,6 +1,7 @@
 package com.codecool.backend.controller;
 
-import com.codecool.backend.controller.dto.MainPostDTO;
+import com.codecool.backend.controller.dto.PostDTO;
+import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -19,14 +20,18 @@ public class PostController {
     }
 
     @GetMapping
-    public List<MainPostDTO> getAllPosts() {
+    public List<PostDTO> getAllPosts() {
         return postService.getAllPosts();
     }
 
     @GetMapping("/{userPublicId}")
-    public List<MainPostDTO> getPostsByUserId(@PathVariable UUID userPublicId) {
-        return postService.getPostByPublicId(userPublicId);
+    public List<PostDTO> getPostsByUserId(@PathVariable UUID userPublicId) {
+        return postService.getPostsByUserPublicId(userPublicId);
     }
 
+    @PostMapping("/{userPublicId}")
+    public boolean createPost(@PathVariable UUID userPublicId, @RequestBody NewPostDTO postDTO) {
+        return postService.createNewPost(postDTO, userPublicId);
+    }
 }
 

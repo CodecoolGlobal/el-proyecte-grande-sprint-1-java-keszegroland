@@ -18,8 +18,8 @@ public class Post {
     private User user;
     private String description;
     private String picture;
-    private LocalDateTime creationDate;
-    @OneToMany(mappedBy = "user")
+    private LocalDateTime creationDate = LocalDateTime.now();
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
 
 
