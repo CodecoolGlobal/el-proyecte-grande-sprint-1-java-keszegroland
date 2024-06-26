@@ -16,14 +16,12 @@ import java.util.UUID;
 
 @Service
 public class CommentService {
-    private final RestTemplate restTemplate;
     private final CommentRepository commentRepository;
     private final UserRepository userRepository;
     private final PostRepository postRepository;
 
     @Autowired
-    public CommentService(RestTemplate restTemplate, CommentRepository commentRepository, UserRepository userRepository, PostRepository postRepository) {
-        this.restTemplate = restTemplate;
+    public CommentService(CommentRepository commentRepository, UserRepository userRepository, PostRepository postRepository) {
         this.commentRepository = commentRepository;
         this.userRepository = userRepository;
         this.postRepository = postRepository;
