@@ -1,6 +1,6 @@
 import { useState } from "react";
-import "./loginForm.css";
-import "../formStyling.css";
+import "./LoginForm.css";
+import "../FormStyling.css";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { FaLock, FaUser } from "react-icons/fa";

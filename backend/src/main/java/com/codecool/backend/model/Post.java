@@ -19,7 +19,7 @@ public class Post {
     private String description;
     private String picture;
     private LocalDateTime creationDate;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "post")
     private List<Comment> comments;
 
 

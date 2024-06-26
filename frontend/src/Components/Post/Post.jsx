@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import "./post.css";
+import "./Post.css";
 import { FaRegPaperPlane } from "react-icons/fa";
 import Like from "./Like";
 import Loading from "../Loading/Loading";
@@ -33,7 +33,7 @@ function Post() {
 	return (
 		<div className="posts">
 			{posts.map(post => (
-				<div key={post.creation_date} className="onePost">
+				<div key={post.creationDate} className="onePost">
 					{/* <div className="postContent"> */}
 					<p className="username"><b>{post.username}</b><span>{post.creationDate.split('T').join(' ').slice(5, -10)}</span></p>
 					<div className="photoDiv">

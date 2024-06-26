@@ -6,12 +6,12 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
-@Table(name = "users")
+@Table(name = "comments")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long commentId;
-    private UUID CommentPublicId = UUID.randomUUID();
+    private UUID commentPublicId = UUID.randomUUID();
     private String comment;
     private LocalDateTime creationDate;
     @ManyToOne
@@ -22,7 +22,7 @@ public class Comment {
     private User user;
 
     public UUID getCommentPublicId() {
-        return CommentPublicId;
+        return commentPublicId;
     }
 
     public long getCommentId() {
@@ -61,8 +61,8 @@ public class Comment {
         this.post = post;
     }
 
-    public void setCommentPublicId(UUID CommentPublicId) {
-        this.CommentPublicId = CommentPublicId;
+    public void setCommentPublicId(UUID commentPublicId) {
+        this.commentPublicId = commentPublicId;
     }
 
     public void setUser(User user) {

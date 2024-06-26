@@ -22,11 +22,11 @@ public class PostController {
     public List<MainPostDTO> getAllPosts() {
         return postService.getAllPosts();
     }
-
-    @GetMapping("/{userPublicId}")
-    public List<MainPostDTO> getPostsByUserId(@PathVariable UUID userPublicId) {
-        return postService.getPostByPublicId(userPublicId);
-    }
+//
+//    @GetMapping("/{userPublicId}")
+//    public List<MainPostDTO> getPostsByUserId(@PathVariable UUID userPublicId) {
+//        return postService.getPostByPublicId(userPublicId);
+//    }
 
 }
 
