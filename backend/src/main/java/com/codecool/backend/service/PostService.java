@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -29,6 +28,8 @@ public class PostService {
 
     public List<MainPostDTO> getAllPosts() {
         List<Post> posts = postRepository.findAll();
+        MainPostDTO[] result = restTemplate.getForObject("http://localhost:8080/api/posts", MainPostDTO[].class);
+        logger.info("Info about the posts: {} ", (Object) result);
         return posts.stream()
                 .map(post -> new MainPostDTO(post.getPublicId(), post.getUser().getUsername(), post.getDescription(), post.getPicture(), post.getCreationDate(), convertCommentsToDTO(post.getComments())))
                 .collect(Collectors.toList());
