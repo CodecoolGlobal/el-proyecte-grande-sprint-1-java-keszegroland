@@ -3,25 +3,25 @@ package com.codecool.backend.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table(name = "posts")
 public class Post {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private UUID publicId;
+    private UUID publicId = UUID.randomUUID();
     @ManyToOne
+    @JoinColumn(name = "userId")
     private User user;
     private String description;
     private String picture;
     private LocalDateTime creationDate;
+    @OneToMany(mappedBy = "post")
+    private List<Comment> comments;
 
-
-    public long getId() {
-        return id;
-    }
 
     public UUID getPublicId() {
         return publicId;
@@ -41,5 +41,29 @@ public class Post {
 
     public LocalDateTime getCreationDate() {
         return creationDate;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPicture(String picture) {
+        this.picture = picture;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 }

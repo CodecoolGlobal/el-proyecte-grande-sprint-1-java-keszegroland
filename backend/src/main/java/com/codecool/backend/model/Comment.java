@@ -6,17 +6,20 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
+@Table(name = "comments")
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long commentId;
     private UUID CommentPublicId = UUID.randomUUID();
     private String comment;
+    private LocalDateTime creationDate;
     @ManyToOne
+    @JoinColumn
     private Post post;
     @ManyToOne
+    @JoinColumn
     private User user;
-    private LocalDateTime creationDate;
 
     public UUID getCommentPublicId() {
         return CommentPublicId;
@@ -30,6 +33,10 @@ public class Comment {
         return comment;
     }
 
+    public LocalDateTime getCreationDate() {
+        return creationDate;
+    }
+
     public Post getPost() {
         return post;
     }
@@ -38,16 +45,16 @@ public class Comment {
         return user;
     }
 
-    public LocalDateTime getCreationDate() {
-        return creationDate;
-    }
-
     public void setCommentId(long commentId) {
         this.commentId = commentId;
     }
 
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public void setPost(Post post) {
@@ -62,7 +69,4 @@ public class Comment {
         this.user = user;
     }
 
-    public void setCreationDate(LocalDateTime creationDate) {
-        this.creationDate = creationDate;
-    }
 }

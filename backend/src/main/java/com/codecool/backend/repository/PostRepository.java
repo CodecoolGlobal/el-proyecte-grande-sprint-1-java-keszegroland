@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.UUID;
 
 public interface PostRepository extends JpaRepository<Post, Long> {
-    List<Post> findAll();
     Post findByPublicId(UUID publicId);
+
+    List<Post> findAllByUserPublicId(UUID userPublicId);
+
 }

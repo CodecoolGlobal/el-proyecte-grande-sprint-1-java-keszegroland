@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
@@ -17,12 +18,10 @@ public class User {
     private String username;
     private String password;
     private String email;
-    @OneToMany
-    @JoinColumn
+    @OneToMany(mappedBy = "user")
     private List<Comment> comments;
 
-    @OneToMany
-    @JoinColumn
+    @OneToMany(mappedBy = "user")
     private List<Post> posts;
 
     public long getUserId() {

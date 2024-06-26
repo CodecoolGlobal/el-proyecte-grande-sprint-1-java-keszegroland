@@ -8,7 +8,7 @@ import com.codecool.backend.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class UserService {
@@ -19,21 +19,31 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-/*    public UserDTO getUserById(long userId) {
-        Optional<User> user = userRepository.findById(userId);
-        return convertUserToDTO(user.get());
+    public UserDTO getUserById(UUID publicId) {
+        User user = userRepository.findByPublicId(publicId);
+        return convertUserToDTO(user);
     }
 
-    public boolean createNewUser(NewUserDTO user) {
-        return userDAO.createNewUser(user);
+    public UUID createNewUser(NewUserDTO userDTO) {
+        User user = new User();
+        user.setFirstName(userDTO.firstName());
+        user.setLastName(userDTO.lastName());
+        user.setUsername(userDTO.username());
+        user.setPassword(userDTO.password());
+        user.setEmail(userDTO.email());
+        userRepository.save(user);
+        return user.getPublicId();
     }
 
     public UserDTO loginUser(UserLoginDTO loginUser) {
-        User user = userDAO.loginUser(loginUser);
+        User user = userRepository.findByUsernameAndPassword(loginUser.username(), loginUser.password());
+        if (user == null) {
+            return null;
+        }
         return convertUserToDTO(user);
     }
 
     private UserDTO convertUserToDTO(User user) {
-        return new UserDTO(user.userId(), user.firstName(), user.lastName(), user.username(), user.email());
-    }*/
+        return new UserDTO(user.getPublicId(), user.getFirstName(), user.getLastName(), user.getUsername(), user.getEmail());
+    }
 }

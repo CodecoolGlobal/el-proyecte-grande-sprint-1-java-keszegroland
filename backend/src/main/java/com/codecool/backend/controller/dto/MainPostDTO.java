@@ -1,6 +1,11 @@
 package com.codecool.backend.controller.dto;
 
-import java.time.LocalDateTime;
+import com.codecool.backend.model.Comment;
 
-public record MainPostDTO(String username, String description, String picture, LocalDateTime creationDate) {
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.UUID;
+
+public record MainPostDTO(UUID publicId, String username, String description, String picture,
+                          LocalDateTime creationDate, List<Comment> commentList) {
 }
