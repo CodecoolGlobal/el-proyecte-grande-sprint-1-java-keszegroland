@@ -41,7 +41,7 @@ public class PostService {
         logger.info("Info about the posts by searched user: {}, user id: {} ", result, userPublicId);
         //add comments to the posts, and user
         return postsByUserId.stream()
-                .map(post -> new MainPostDTO(post.getPublicId(), post.getUser().getUsername(), post.getDescription(), post.getPicture(), post.getCreationDate()))
+                .map(post -> new MainPostDTO(post.getPublicId(), post.getUser().getUsername(), post.getDescription(), post.getPicture(), post.getCreationDate(), post.getComments()))
                 .collect(Collectors.toList());
     }
 
