@@ -1,7 +1,6 @@
 package com.codecool.backend.controller;
 
 import com.codecool.backend.controller.dto.NewCommentDTO;
-import com.codecool.backend.model.Comment;
 import com.codecool.backend.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
