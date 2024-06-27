@@ -1,7 +1,7 @@
 .createPostForm {
     justify-content: center;
     flex-direction: column;
-    padding: 30px;
+    padding: 20px 30px;
     max-height: 90vh;
     overflow: auto;
 }
@@ -18,9 +18,26 @@
     font-size: 16px;
     padding: 20px 55px 20px 20px;
     height: 150px;
+    min-height: 63px;
 }
 
 #description::placeholder {
     color: rgb(88, 88, 88);
     font-size: 16px;
+}
+
+.createPostForm #header {
+    margin-bottom: 20px;
+}
+
+.createPostForm .buttons {
+    margin-top: 20px;
+}
+
+.createPostForm .formBtn {
+    margin: 0;
+}
+
+.createPostForm .formBtn:first-child {
+    margin-bottom: 10px;
 }

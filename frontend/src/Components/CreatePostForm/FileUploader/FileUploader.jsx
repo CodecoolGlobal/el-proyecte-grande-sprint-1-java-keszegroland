@@ -30,25 +30,25 @@ function FileUploader({ onUpload }) {
 	});
 
 	return (
-		<>
-			<div className="file-uploader" {...getRootProps()}>
-				<input {...getInputProps()}></input>
-				<div className='file_uploader_container'>
+		<div className="file-uploader">
+			{files.length === 0 ? (
+				<div {...getRootProps()} className='file_uploader_container'>
+					<input {...getInputProps()}></input>
 					<img className='file-picture' alt='file-upload' src={'/Assets/file-upload.svg'}></img>
 					<h1 className='drag-photo-text'>Drag photo here</h1>
 					<p className='file-format-text'>SVG, PNG, JPEG</p>
-					<button className='select-from-computer-button' onClick={e => e.preventDefault()}>Select from computer</button>
+					<button className='select-from-computer-button' onClick={e => e.preventDefault()}>Select From Computer</button>
 				</div>
-			</div>
-			{/* preview*/}
-			<ul>
-				{files.map(file => (
-					<li key={file.name}>
-						<img src={file.preview} alt="" width={100} height={100}></img>
-					</li>
-				))}
-			</ul>
-		</>
+			) : (
+				<ul className='uploaded-images'>
+					{files.map(file => (
+						<li key={file.file.name}>
+							<img className='uploaded-image' src={file.preview} alt={file.file.name}></img>
+						</li>
+					))}
+				</ul>
+			)}
+		</div>
 	);
 
 }

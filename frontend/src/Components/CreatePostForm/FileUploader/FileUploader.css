@@ -39,3 +39,18 @@
     color: white;
     font-weight: bold;
 }
+
+.uploaded-images {
+    margin: 20px 0;
+    padding: 0;
+    align-items: center;
+    text-align: center;
+    list-style-type: none;
+}
+
+
+.uploaded-image {
+    width: 70%;
+    height: 70%;
+    border-radius: 16px;
+}

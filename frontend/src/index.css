@@ -16,7 +16,7 @@ body {
 /* Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: #8f54a0 #ffffff;
+  scrollbar-color: #8f54a0 transparent;
 }
 
 /* Chrome, Edge, and Safari */
