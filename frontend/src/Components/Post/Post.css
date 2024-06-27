@@ -84,8 +84,6 @@
 .commentHere {
     border: none;
     width: 92%;
-    border-bottom: 1px solid black;
-    background-color: white;
 }
 
 
@@ -130,4 +128,8 @@
     100% {
         width: 0;
     }
+}
+
+.posts {
+    margin-top: 60px;
 }

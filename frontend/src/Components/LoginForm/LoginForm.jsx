@@ -80,7 +80,7 @@ function Login() {
                     </div>
                     <FaLock className="icon" />
                 </div>
-                <button type="submit">Continue</button>
+                <button className="formBtn" type="submit">Continue</button>
                 <div className="line-container">
                     <hr />
                     <p className="or">OR</p>

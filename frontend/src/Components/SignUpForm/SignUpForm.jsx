@@ -115,7 +115,7 @@ function SignUpForm() {
 					</div>
 					<FaLock className="icon" />
 				</div>
-				<button type="submit">Create an account</button>
+				<button className="formBtn" type="submit">Create an account</button>
 
 				<p className="linkToLogin">Already have an account?<Link className="linkToSignOrLogin" to={"/login"}>Log in</Link></p>
 			</form>

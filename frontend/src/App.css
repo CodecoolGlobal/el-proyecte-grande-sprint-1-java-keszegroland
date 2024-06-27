@@ -1,0 +1,115 @@
+#light {
+    background-color: white;
+}
+
+#dark {
+    background-color: black;
+}
+
+#light .onePost {
+    color: black;
+}
+
+#dark .onePost {
+    color: white;
+}
+
+#light .onePost .commentHere {
+    border-bottom: 1px solid black;
+    background-color: transparent;
+    color: black;
+}
+
+#dark .onePost .commentHere {
+    border-bottom: 1px solid white;
+    background-color: transparent;
+    color: white;
+}
+
+#light .strings {
+    color: black;
+}
+
+#dark .strings {
+    color: white;
+}
+
+@media (min-width: 576px) {
+
+    #light .signupEmblem,
+    #light .homeEmblem,
+    #light .createAnswerEmblem {
+        color: black;
+    }
+
+    #light .links {
+        color: black;
+    }
+
+    #dark .signupEmblem,
+    #dark .homeEmblem,
+    #dark .createAnswerEmblem {
+        color: white;
+    }
+
+    #dark .links {
+        color: white;
+    }
+
+    /* kell e hogy kis méretben a blob egy sávba legyen és ne lógjon belea a postba? */
+    #light .watermark {
+        background-color: transparent;
+    }
+}
+
+@media (max-width: 576px) {
+
+    #light .signupEmblem,
+    #light .homeEmblem,
+    #light .createAnswerEmblem {
+        color: black;
+    }
+
+    #light .links {
+        color: black;
+        background-color: white;
+    }
+
+    #dark .signupEmblem,
+    #dark .homeEmblem,
+    #dark .createAnswerEmblem {
+        color: white;
+    }
+
+    #dark .links {
+        background-color: black;
+    }
+
+
+    /* kell e hogy kis méretben a blob egy sávba legyen és ne lógjon belea a postba? */
+    #light .watermark {
+        background-color: white;
+    }
+
+    #dark .watermark {
+        background-color: black;
+    }
+}
+
+/* #light .DarkLightBtn {
+    color: black;
+}
+
+#dark .DarkLightBtn {
+    color: white;
+} */
+
+.darkLightBtn {
+    position: fixed;
+    right: 5px;
+    top: 5px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 9;
+}
