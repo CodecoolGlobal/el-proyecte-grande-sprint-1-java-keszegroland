@@ -36,7 +36,6 @@ function CreatePostForm() {
 
 	const handleUpload = (base64String) => {
 		setPicture(base64String);
-		console.log(base64String);
 	}
 
 	if (loading) {
