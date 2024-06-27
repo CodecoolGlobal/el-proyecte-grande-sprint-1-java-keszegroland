@@ -50,7 +50,7 @@ function CreatePostForm() {
 						id="description"
 					/>
 				</div>
-				<div className="input-box">
+{/* 				<div className="input-box">
 					<input
 						type="text"
 						value={picture}
@@ -62,7 +62,7 @@ function CreatePostForm() {
 						<label>Picture</label>
 					</div>
 					<AiFillPicture className="icon" />
-				</div>
+				</div> */}
 				<FileUploader />
 
 				<div className="buttons">
