@@ -10,6 +10,7 @@
     border-image: conic-gradient(from var(--angle), hsla(139, 68%, 71%, 1), hsla(280, 98%, 72%, 1), hsla(300, 75%, 79%, 1), hsla(13, 100%, 80%, 1),
             hsla(258, 85%, 62%, 1), hsla(234, 93%, 60%, 1), hsla(180, 79%, 65%, 1), hsla(139, 68%, 71%, 1)) 1;
     animation: 10s rotate linear infinite;
+    cursor: pointer;
 }
 
 @keyframes rotate {
@@ -91,4 +92,42 @@
 .heart {
     width: 35px;
     height: 35px;
+}
+
+.heart-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: drop-shadow(0 19px 38px rgba(0, 0, 0, 0.7));
+    transform-origin: center center;
+    width: 0;
+}
+
+.animate-like {
+    animation: 2s animateLike ease-in-out forwards;
+}
+
+@keyframes animateLike {
+    0% {
+        width: 0;
+    }
+
+    5% {
+        width: 180px;
+    }
+
+    10% {
+        width: 150px;
+    }
+
+    20%,
+    35% {
+        width: 160px;
+    }
+
+    40%,
+    100% {
+        width: 0;
+    }
 }
