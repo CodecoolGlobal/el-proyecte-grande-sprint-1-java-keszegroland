@@ -17,7 +17,8 @@ public class Post {
     @JoinColumn(name = "userId")
     private User user;
     private String description;
-    private String picture;
+    @Lob
+    private byte[] picture;
     private LocalDateTime creationDate = LocalDateTime.now();
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
@@ -35,7 +36,7 @@ public class Post {
         return description;
     }
 
-    public String getPicture() {
+    public byte[] getPicture() {
         return picture;
     }
 
@@ -55,7 +56,7 @@ public class Post {
         this.description = description;
     }
 
-    public void setPicture(String picture) {
+    public void setPicture(byte[] picture) {
         this.picture = picture;
     }
 

@@ -1,64 +1,56 @@
-import React, { useState } from 'react';
-import Dropzone from 'react-dropzone';
+import React, { useCallback, useState } from 'react';
+import { useDropzone } from 'react-dropzone';
 import "./FileUploader.css";
 
-function fetchImages(formData) {
-	return fetch("https://api.escuelajs.co/api/v1/files/upload", {
-		method: "POST",
-		body: formData
-	}).then((res) => res.json());
-}
 
-function FileUploader() {
-	const [file, setFile] = useState(null);
-	const [preview, setPreview] = useState(null);
+function FileUploader({ onUpload }) {
+	const [files, setFiles] = useState([]);
 
-	const handleUpload = (acceptedFiles) => {
-		console.log("Logging dropped/selected files:", acceptedFiles);
-		const formData = new FormData();
-		formData.append("file", acceptedFiles[0]);
+	const onDrop = useCallback(acceptedFiles => {
+		if (acceptedFiles?.length) {
+			const reader = new FileReader();
+			reader.onload = () => {
+				const base64String = reader.result.split(",")[1];
+				setFiles(previousFiles => [
+					...previousFiles,
+					{ file: acceptedFiles[0], preview: reader.result, base64: base64String },
+				]);
+				onUpload(base64String);
+			};
 
-		fetchImages(formData).then((res) => {
-			if (res) {
-				setFile(acceptedFiles[0]);
-				setPreview(URL.createObjectURL(acceptedFiles[0]));
-			} else {
-				console.error(res);
-			}
-		})
-			.catch((error) => {
-				console.error(error);
-			});
-	};
+			reader.readAsDataURL(acceptedFiles[0]);
+		}
+	}, [onUpload]);
+
+	const { getRootProps, getInputProps } = useDropzone({
+		onDrop,
+		accept: {
+			'image/*': ['.png', '.jpg', '.jpeg', '.svg']
+		}
+	});
 
 	return (
-		<div className="file-uploader">
-			<div className='file_uploader_container'>
-				<Dropzone onDrop={handleUpload} accept={"image/*"}>
-					{({ getRootProps, getInputProps, open, isDragAccept, isDragReject }) => {
-						const additionalClass = isDragAccept ? "accept" : isDragReject ? "reject" : "";
-						return (
-							<div {...getRootProps({ className: `dropzone ${additionalClass}` })}>
-								<input {...getInputProps()} style={{ display: 'none' }} />
-								<img className='file-picture' alt='file-upload' src={'/Assets/file-upload.svg'} />
-								<h1 className='drag-photo-text'>Drag photo here</h1>
-								<p className='file-format-text'>SVG, PNG, JPEG</p>
-								<button type="button" className='select-from-computer-button' onClick={open}>
-									Select from computer
-								</button>
-							</div>
-						);
-					}}
-				</Dropzone>
-			</div>
-			{preview && (
-				<div className='uploaded-picture-container'>
-					<h4>File uploaded successfully</h4>
-					<img src={preview} className='uploaded-picture' alt='uploaded img' />
+		<>
+			<div className="file-uploader" {...getRootProps()}>
+				<input {...getInputProps()}></input>
+				<div className='file_uploader_container'>
+					<img className='file-picture' alt='file-upload' src={'/Assets/file-upload.svg'}></img>
+					<h1 className='drag-photo-text'>Drag photo here</h1>
+					<p className='file-format-text'>SVG, PNG, JPEG</p>
+					<button className='select-from-computer-button' onClick={e => e.preventDefault()}>Select from computer</button>
 				</div>
-			)}
-		</div>
+			</div>
+			{/* preview*/}
+			<ul>
+				{files.map(file => (
+					<li key={file.name}>
+						<img src={file.preview} alt="" width={100} height={100}></img>
+					</li>
+				))}
+			</ul>
+		</>
 	);
+
 }
 
 export default FileUploader;

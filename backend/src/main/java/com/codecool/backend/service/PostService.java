@@ -6,11 +6,13 @@ import com.codecool.backend.model.Post;
 import com.codecool.backend.model.User;
 import com.codecool.backend.repository.PostRepository;
 import com.codecool.backend.repository.UserRepository;
+import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Base64;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -37,12 +39,13 @@ public class PostService {
         return postsByUserId.stream().map(this::convertPostToDTO).collect(Collectors.toList());
     }
 
+    @Transactional
     public boolean createNewPost(NewPostDTO newPostDTO, UUID userPublicId) {
         try {
             Post post = new Post();
             post.setUser(getUserByPublicId(userPublicId));
             post.setDescription(newPostDTO.description());
-            post.setPicture(newPostDTO.picture());
+            convertBase64Image(newPostDTO, post);
             postRepository.save(post);
             return true;
         } catch (RuntimeException e) {
@@ -51,12 +54,28 @@ public class PostService {
         }
     }
 
+    private void convertBase64Image(NewPostDTO newPostDTO, Post post) {
+        String pictureBase64Data = newPostDTO.picture();
+        if (pictureBase64Data != null && !pictureBase64Data.isEmpty()) {
+            byte[] data = Base64.getDecoder().decode(pictureBase64Data);
+            post.setPicture(data);
+        }
+    }
+
+    private String convertImageToBase64(byte[] picture) {
+        String base64Image = null;
+        if (picture != null) {
+            base64Image = "data:image/png;base64," + Base64.getEncoder().encodeToString(picture);
+        }
+        return base64Image;
+    }
+
     private User getUserByPublicId(UUID userPublicId) {
         return userRepository.findByPublicId(userPublicId);
     }
 
     private PostDTO convertPostToDTO(Post post) {
-        return new PostDTO(post.getPublicId(), post.getUser().getUsername(), post.getDescription(), post.getPicture(), post.getCreationDate());
+        return new PostDTO(post.getPublicId(), post.getUser().getUsername(), post.getDescription(), convertImageToBase64(post.getPicture()), post.getCreationDate());
     }
 
 }
