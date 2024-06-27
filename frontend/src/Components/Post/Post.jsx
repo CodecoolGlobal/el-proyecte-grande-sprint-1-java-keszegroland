@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import "./Post.css";
 import Loading from "../Loading/Loading";
 import OnePost from "./OnePost";
-
+import cloud from "../../cloudy.png";
 
 const fetchPosts = () => {
 	return fetch('/api/posts').then(res => res.json());
@@ -28,9 +28,12 @@ function Post() {
 
 	return (
 		<div className="posts">
+			<h1 className="homeFeed">Home Feed</h1>
 			{posts.map(post => (
-				<OnePost post={post} />
-
+				<section key={post.publicId}>
+					<OnePost post={post} />
+					<img src={cloud} alt="cloud" className="cloud"></img>
+				</section>
 			))}
 		</div>
 	)

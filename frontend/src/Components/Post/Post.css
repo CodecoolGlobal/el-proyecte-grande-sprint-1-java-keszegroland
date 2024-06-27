@@ -1,29 +1,20 @@
 .onePost {
     max-width: 483px;
     max-height: 70%;
-    border: 1px solid black;
-    margin: 20px auto;
+    margin-bottom: 60px;
+    margin-top: 20px;
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    border: 2px solid;
+    border: none;
+    /* border: 2px solid;
     border-image: conic-gradient(from var(--angle), hsla(139, 68%, 71%, 1), hsla(280, 98%, 72%, 1), hsla(300, 75%, 79%, 1), hsla(13, 100%, 80%, 1),
             hsla(258, 85%, 62%, 1), hsla(234, 93%, 60%, 1), hsla(180, 79%, 65%, 1), hsla(139, 68%, 71%, 1)) 1;
-    animation: 10s rotate linear infinite;
-    cursor: pointer;
+    animation: 10s rotate linear infinite; */
+    z-index: 4;
+    position: relative;
 }
 
-@keyframes rotate {
-    to {
-        --angle: 360deg;
-    }
-}
-
-@property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-}
 
 .photoDiv {
     flex: 1;
@@ -41,49 +32,11 @@
     object-fit: cover;
 }
 
-@media (max-width: 2000px) {
-    .onePost {
-        width: 40%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
-
-@media (max-width: 1200px) {
-    .onePost {
-        width: 40%;
-        margin-left: 40%;
-        margin-right: auto;
-    }
-}
-
-@media (max-width: 992px) {
-    .onePost {
-        width: 50%;
-        margin-left: 35%;
-        margin-right: auto;
-    }
-}
-
-@media (max-width: 768px) {
-    .onePost {
-        width: 60%;
-        margin-left: 30%;
-        margin-right: auto;
-    }
-}
-
-@media (max-width: 576px) {
-    .onePost {
-        width: unset;
-        margin: 20px;
-    }
-}
-
-
 .commentHere {
     border: none;
     width: 92%;
+    border-bottom: 1px solid black;
+    background-color: transparent;
 }
 
 
@@ -132,4 +85,99 @@
 
 .posts {
     margin-top: 60px;
+}
+
+.homeFeed {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.cloud {
+    width: 53%;
+    height: 105%;
+    max-width: 53%;
+    max-height: 105%;
+    z-index: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 60px;
+    margin-top: 20px;
+}
+
+@media (max-width:2000px) {
+    .onePost {
+        width: 40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+}
+
+@media (max-width: 1200px) {
+    .cloud {
+        width: 60%;
+        max-width: 800%;
+        max-height: none;
+        margin-left: 20%;
+    }
+
+    .onePost {
+        width: 40%;
+        margin-left: 40%;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 992px) {
+    .cloud {
+        width: 70%;
+        max-width: 100%;
+        max-height: none;
+        margin-left: 20%;
+    }
+
+    .onePost {
+        width: 50%;
+        margin-left: 35%;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .cloud {
+        width: 80%;
+        max-width: 100%;
+        max-height: none;
+    }
+
+    .onePost {
+        width: 60%;
+        margin-left: 30%;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .cloud {
+        width: 100%;
+        max-width: 100%;
+        max-height: none;
+        padding: 10px;
+    }
+
+    .onePost {
+        width: unset;
+        margin: 20px;
+    }
+}
+
+.descUser,
+.username,
+.comment,
+.allComment {
+    padding-left: 10px;
 }

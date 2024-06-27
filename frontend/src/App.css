@@ -60,6 +60,22 @@
     #light .watermark {
         background-color: transparent;
     }
+
+    #light .onePost {
+        background: rgba(246, 246, 246, 0.9);
+        border-radius: 16px;
+        box-shadow: 35px 35px 35px rgba(2, 37, 31, 0.2);
+        backdrop-filter: blur(6.2px);
+        -webkit-backdrop-filter: blur(6.2px);
+    }
+
+    #dark .onePost {
+        background: rgba(46, 46, 46, 0.8);
+        border-radius: 16px;
+        box-shadow: 35px 35px 35px rgba(2, 37, 31, 0.2);
+        backdrop-filter: blur(6.2px);
+        -webkit-backdrop-filter: blur(6.2px);
+    }
 }
 
 @media (max-width: 576px) {
@@ -94,6 +110,22 @@
     #dark .watermark {
         background-color: black;
     }
+
+    #light .onePost {
+        background: rgba(246, 246, 246, 0.9);
+        border-radius: 16px;
+        box-shadow: 35px 35px 35px rgba(2, 37, 31, 0.2);
+        backdrop-filter: blur(6.2px);
+        -webkit-backdrop-filter: blur(6.2px);
+    }
+
+    #dark .onePost {
+        background: rgba(46, 46, 46, 0.8);
+        border-radius: 16px;
+        box-shadow: 35px 35px 35px rgba(2, 37, 31, 0.2);
+        backdrop-filter: blur(6.2px);
+        -webkit-backdrop-filter: blur(6.2px);
+    }
 }
 
 /* #light .DarkLightBtn {
@@ -112,4 +144,12 @@
     border: none;
     cursor: pointer;
     z-index: 9;
+}
+
+#light .homeFeed {
+    color: black;
+}
+
+#dark .homeFeed {
+    color: white;
 }
