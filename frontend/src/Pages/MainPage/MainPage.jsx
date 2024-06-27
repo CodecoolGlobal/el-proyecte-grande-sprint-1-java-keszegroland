@@ -46,9 +46,9 @@ function MainPage() {
             </div >
             <Post />
             <div className="links">
-                <div className="linkDiv"><Link to={'/'} className='homeEmblem'><FaHome className="homepage-icon" /><span className="link-text">{innerWidth > 576 ? "Home page" : ""}</span></Link></div>
-                <div className="linkDiv"><Link to={'/signup'} className='signupEmblem'><FaUserTie /><span className="link-text">{innerWidth > 576 ? "Sign up" : ""}</span></Link></div>
-                <div className="linkDiv"><Link to={'/posts/create'} className='createAnswerEmblem'><IoCreate /><span className="link-text">{innerWidth > 576 ? "Create new Post" : ""}</span></Link></div>
+                <div className="linkDiv"><Link to={'/'} className='homeEmblem'><FaHome className="homepage-icon" /><span className="link-text">{innerWidth > 576 ? " Home page" : ""}</span></Link></div>
+                <div className="linkDiv"><Link to={'/posts/create'} className='createAnswerEmblem'><IoCreate /><span className="link-text">{innerWidth > 576 ? " Create new Post" : ""}</span></Link></div>
+                <div className="linkDiv"><Link to={'/signup'} className='signupEmblem'><FaUserTie /><span className="link-text">{innerWidth > 576 ? " Sign up" : ""}</span></Link></div>
             </div>
         </div >
     );

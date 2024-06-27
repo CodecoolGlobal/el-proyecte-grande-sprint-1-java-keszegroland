@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    background-color: white;
 }
 
 .logo {
@@ -28,15 +27,6 @@
     z-index: 2;
 }
 
-/* .blob {
-    width: 350px;
-    height: 200px;
-    position: absolute;
-    margin-top: -75px;
-    margin-left: -55px;
-    z-index: 1;
-} */
-
 section {
     position: relative;
     display: flex;
@@ -53,9 +43,6 @@ section {
     z-index: 1;
     position: absolute;
     top: 0;
-    /* left: -15; */
-    /* width: 500px; */
-    /* height: 500px; */
 }
 
 
@@ -68,7 +55,6 @@ section {
         font-size: 30px;
         cursor: pointer;
         text-decoration: none;
-        color: black;
         display: block;
         flex-direction: column;
         z-index: 5;
@@ -102,7 +88,6 @@ section {
         font-size: 30px;
         cursor: pointer;
         text-decoration: none;
-        color: black;
         flex-direction: row;
         text-wrap: wrap;
     }
@@ -110,11 +95,11 @@ section {
     .links {
         width: 100vw;
         padding: 5px;
-        background-color: white;
         position: -webkit-sticky;
         position: sticky;
         bottom: 0;
         display: flex;
+        z-index: 5;
         flex-direction: row;
         justify-content: space-evenly;
     }
@@ -149,18 +134,10 @@ section {
     position: fixed;
     top: 0;
     width: 100vw;
-    height: 80px;
+    height: 75px;
     display: flex;
     flex-direction: row;
     z-index: 5;
-}
-
-.mainpagePosts {
-    position: relative;
-    flex-grow: 1;
-    margin-top: 75px;
-    z-index: 0;
-    overflow: hidden;
 }
 
 .svgBlob {

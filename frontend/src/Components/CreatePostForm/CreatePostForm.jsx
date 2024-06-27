@@ -60,8 +60,8 @@ function CreatePostForm() {
 				<FileUploader onUpload={handleUpload} />
 
 				<div className="buttons">
-					<button type="submit">Create Post</button>
-					<button type="button" onClick={() => navigate("/")}>Cancel</button>
+					<button className="formBtn" type="submit">Create Post</button>
+					<button className="formBtn" type="button" onClick={() => navigate("/")}>Cancel</button>
 				</div>
 			</form>
 		</div>
