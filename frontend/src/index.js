@@ -7,6 +7,7 @@ import MainPage from './Pages/MainPage/MainPage';
 import SignUp from './Pages/SignUp/SignUp';
 import CreatePost from './Pages/CreatePost/CreatePost';
 import Login from './Pages/Login/Login';
+import App from './App';
 
 const router = createBrowserRouter(
   [
@@ -14,7 +15,7 @@ const router = createBrowserRouter(
       children: [
         {
           path: "/",
-          element: <MainPage />
+          element: <App />
         },
         {
           path: "/signup",

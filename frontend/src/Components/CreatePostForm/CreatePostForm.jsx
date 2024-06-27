@@ -50,7 +50,7 @@ function CreatePostForm() {
 						id="description"
 					/>
 				</div>
-{/* 				<div className="input-box">
+				{/* 				<div className="input-box">
 					<input
 						type="text"
 						value={picture}
@@ -66,8 +66,8 @@ function CreatePostForm() {
 				<FileUploader />
 
 				<div className="buttons">
-					<button type="submit">Create Post</button>
-					<button type="button" onClick={() => navigate("/")}>Cancel</button>
+					<button className="formBtn" type="submit">Create Post</button>
+					<button className="formBtn" type="button" onClick={() => navigate("/")}>Cancel</button>
 				</div>
 			</form>
 		</div>

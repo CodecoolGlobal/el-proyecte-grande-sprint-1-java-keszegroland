@@ -7,31 +7,14 @@
     flex-direction: column;
     overflow: hidden;
     border: none;
-    border-radius: 20px;
     /* border: 2px solid;
     border-image: conic-gradient(from var(--angle), hsla(139, 68%, 71%, 1), hsla(280, 98%, 72%, 1), hsla(300, 75%, 79%, 1), hsla(13, 100%, 80%, 1),
             hsla(258, 85%, 62%, 1), hsla(234, 93%, 60%, 1), hsla(180, 79%, 65%, 1), hsla(139, 68%, 71%, 1)) 1;
     animation: 10s rotate linear infinite; */
     z-index: 4;
     position: relative;
-    background: rgba(246, 246, 246, 0.9);
-    border-radius: 16px;
-    box-shadow: 35px 35px 35px rgba(2, 37, 31, 0.2);
-    backdrop-filter: blur(6.2px);
-    -webkit-backdrop-filter: blur(6.2px);
 }
 
-/* @keyframes rotate {
-    to {
-        --angle: 360deg;
-    }
-}
-
-@property --angle {
-    syntax: '<angle>';
-    initial-value: 0deg;
-    inherits: false;
-} */
 
 .photoDiv {
     flex: 1;
@@ -41,7 +24,6 @@
     display: flex;
     align-items: center;
     position: relative;
-
 }
 
 .images {
@@ -99,6 +81,10 @@
     100% {
         width: 0;
     }
+}
+
+.posts {
+    margin-top: 60px;
 }
 
 .homeFeed {

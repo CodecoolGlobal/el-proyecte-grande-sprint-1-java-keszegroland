@@ -30,7 +30,7 @@ function Post() {
 		<div className="posts">
 			<h1 className="homeFeed">Home Feed</h1>
 			{posts.map(post => (
-				<section>
+				<section key={post.publicId}>
 					<OnePost post={post} />
 					<img src={cloud} alt="cloud" className="cloud"></img>
 				</section>

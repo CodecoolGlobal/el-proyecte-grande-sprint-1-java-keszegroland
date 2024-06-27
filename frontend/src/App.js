@@ -1,16 +1,23 @@
-import logo from './logo.PNG';
 import './App.css';
+import DarkLightMode from './Components/DarkLightMode/DarkLightMode';
 import MainPage from './Pages/MainPage/MainPage';
+import { createContext, useState } from 'react';
+
+export const ThemeContext = createContext(null);
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    setTheme(current => current === "light" ? "dark" : "light");
+  }
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <h2>App...</h2>
-        <MainPage></MainPage>
-      </header>
-    </div>
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className="App" id={theme}>
+        <button onClick={toggleTheme} className="darkLightBtn">{theme === "light" ? <img className="darkLightImg" alt="moon" src="./Assets/moon.svg"></img> : <img className="darkLightImg" alt="sun" src="./Assets/sun.svg"></img>}</button>
+        <MainPage />
+      </div>
+    </ThemeContext.Provider>
   );
 }
 
