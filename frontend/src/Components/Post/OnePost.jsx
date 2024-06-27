@@ -4,6 +4,7 @@ import { FcLike } from "react-icons/fc";
 import { formatDistanceToNowStrict } from 'date-fns';
 import { FaRegPaperPlane } from "react-icons/fa";
 import HeartAnimation from "./HeartAnimation";
+import "./Post.css";
 
 function OnePost({ post }) {
     const [isAnimating, setIsAnimating] = useState(false);
@@ -38,11 +39,11 @@ function OnePost({ post }) {
             </div>
             <div>{isLiked ? <FcLike className="heart" onClick={handleLike} /> : <PiHeartThin className="heart" onClick={handleLike} />}</div>
             <p><b className="descUser">{post.username}: </b>{post.description}</p>
-            <form>
+            <form className="comment">
                 <input className="commentHere" placeholder="Comment here" name="comment" />
                 {<FaRegPaperPlane onClick={handlePostComment} />}
             </form>
-            <p>View all comments</p>
+            <p className="allComment">View all comments</p>
         </div>
     )
 }
