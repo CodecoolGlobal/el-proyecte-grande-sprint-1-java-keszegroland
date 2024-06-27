@@ -3,7 +3,6 @@ import "./CreatePostForm.css";
 import "../FormStyling.css";
 import Loading from "../Loading/Loading";
 import { useNavigate } from "react-router";
-import { AiFillPicture } from "react-icons/ai";
 import FileUploader from "./FileUploader/FileUploader";
 
 function createPost(post, userPublicId) {
@@ -17,19 +16,27 @@ function createPost(post, userPublicId) {
 function CreatePostForm() {
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
-	const userId = "c76dc986-4094-4fd7-bc95-487b72dd9727";
+	const userId = "e32af39c-c1cb-429d-bd1b-67f4bf09afa5";
 	const [description, setDescription] = useState("");
-	const [picture, setPicture] = useState("");
+	const [picture, setPicture] = useState(null);
 
 	const handleCreatePost = (e) => {
 		e.preventDefault();
 		setLoading(true);
-		const post = { description, picture };
+		const post = {
+			description: description,
+			picture: picture
+		};
 		createPost(post, userId)
 			.then(() => {
 				setLoading(false);
 				navigate("/");
 			})
+	}
+
+	const handleUpload = (base64String) => {
+		setPicture(base64String);
+		console.log(base64String);
 	}
 
 	if (loading) {
@@ -50,20 +57,7 @@ function CreatePostForm() {
 						id="description"
 					/>
 				</div>
-				{/* 				<div className="input-box">
-					<input
-						type="text"
-						value={picture}
-						placeholder="Picture"
-						onChange={(e) => setPicture(e.target.value)}
-						id="picture"
-					/>
-					<div className="label-container">
-						<label>Picture</label>
-					</div>
-					<AiFillPicture className="icon" />
-				</div> */}
-				<FileUploader />
+				<FileUploader onUpload={handleUpload} />
 
 				<div className="buttons">
 					<button className="formBtn" type="submit">Create Post</button>

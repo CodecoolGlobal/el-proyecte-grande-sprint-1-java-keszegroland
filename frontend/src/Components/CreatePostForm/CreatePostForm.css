@@ -2,6 +2,8 @@
     justify-content: center;
     flex-direction: column;
     padding: 30px;
+    max-height: 90vh;
+    overflow: auto;
 }
 
 #description {
