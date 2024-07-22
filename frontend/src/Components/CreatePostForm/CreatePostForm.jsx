@@ -5,8 +5,8 @@ import Loading from "../Loading/Loading";
 import { useNavigate } from "react-router";
 import FileUploader from "./FileUploader/FileUploader";
 
-function createPost(post, userPublicId) {
-	return fetch(`/api/posts/${userPublicId}`, {
+function createPost(post, memberPublicId) {
+	return fetch(`/api/posts/${memberPublicId}`, {
 		method: "POST",
 		headers: { "Content-Type": "application/json", },
 		body: JSON.stringify(post),
@@ -16,7 +16,7 @@ function createPost(post, userPublicId) {
 function CreatePostForm() {
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
-	const userId = "e32af39c-c1cb-429d-bd1b-67f4bf09afa5";
+	const memberId = "2079a96b-e3ab-42de-8e9d-5be19e09d298";
 	const [description, setDescription] = useState("");
 	const [picture, setPicture] = useState(null);
 
@@ -27,7 +27,7 @@ function CreatePostForm() {
 			description: description,
 			picture: picture
 		};
-		createPost(post, userId)
+		createPost(post, memberId)
 			.then(() => {
 				setLoading(false);
 				navigate("/");
