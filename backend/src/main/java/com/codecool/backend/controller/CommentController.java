@@ -17,8 +17,8 @@ public class CommentController {
         this.commentService = commentService;
     }
 
-    @PostMapping("/{userId}/{postId}")
-    public UUID createComment(@RequestBody NewCommentDTO comment, @PathVariable UUID userId, @PathVariable UUID postId) {
-        return commentService.createComment(comment, userId, postId);
+    @PostMapping("/{memberId}/{postId}")
+    public UUID createComment(@RequestBody NewCommentDTO comment, @PathVariable UUID memberId, @PathVariable UUID postId) {
+        return commentService.createComment(comment, memberId, postId);
     }
 }

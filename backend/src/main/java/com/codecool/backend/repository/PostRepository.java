@@ -9,6 +9,6 @@ import java.util.UUID;
 public interface PostRepository extends JpaRepository<Post, Long> {
     Post findByPublicId(UUID publicId);
 
-    List<Post> findAllByUserPublicId(UUID userPublicId);
+    List<Post> findAllByMemberPublicId(UUID memberPublicId);
 
 }

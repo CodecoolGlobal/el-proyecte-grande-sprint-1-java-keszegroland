@@ -24,14 +24,14 @@ public class PostController {
         return postService.getAllPosts();
     }
 
-    @GetMapping("/{userPublicId}")
-    public List<PostDTO> getPostsByUserId(@PathVariable UUID userPublicId) {
-        return postService.getPostsByUserPublicId(userPublicId);
+    @GetMapping("/{memberPublicId}")
+    public List<PostDTO> getPostsByMemberId(@PathVariable UUID memberPublicId) {
+        return postService.getPostsByMemberPublicId(memberPublicId);
     }
 
-    @PostMapping("/{userPublicId}")
-    public boolean createPost(@PathVariable UUID userPublicId, @RequestBody NewPostDTO postDTO) {
-        return postService.createNewPost(postDTO, userPublicId);
+    @PostMapping("/{memberPublicId}")
+    public UUID createPost(@PathVariable UUID memberPublicId, @RequestBody NewPostDTO postDTO) {
+        return postService.createNewPost(postDTO, memberPublicId);
     }
 }
 
