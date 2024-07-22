@@ -7,11 +7,11 @@ import { FaLock, FaUser } from "react-icons/fa";
 import { MdAlternateEmail } from "react-icons/md";
 
 
-function createUser(user) {
-	return fetch("/api/users/signUp", {
+function createMember(member) {
+	return fetch("/api/members/signUp", {
 		method: "POST",
 		headers: { "Content-Type": "application/json", },
-		body: JSON.stringify(user),
+		body: JSON.stringify(member),
 	}).then((res) => res.json());
 };
 
@@ -25,11 +25,11 @@ function SignUpForm() {
 	const [email, setEmail] = useState("");
 
 
-	const handleCreateUser = (e) => {
+	const handleCreateMember = (e) => {
 		e.preventDefault();
 		setLoading(true);
-		const user = { firstName, lastName, username, password, email };
-		createUser(user)
+		const member = { firstName, lastName, username, password, email };
+		createMember(member)
 			.then(() => {
 				setLoading(false);
 				navigate("/");
@@ -42,7 +42,7 @@ function SignUpForm() {
 
 	return (
 		<div className="containerGlass">
-			<form className="signUpForm" onSubmit={handleCreateUser}>
+			<form className="signUpForm" onSubmit={handleCreateMember}>
 				<h1 id="header">Sign up</h1>
 				<p id="sub-header">Create your account in seconds</p>
 				<div className="input-box" id="full-name">

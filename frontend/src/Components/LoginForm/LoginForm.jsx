@@ -5,11 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { FaLock, FaUser } from "react-icons/fa";
 
-const loginUser = (user) => {
-    return fetch("/api/users/login", {
+const loginMember = (member) => {
+    return fetch("/api/members/login", {
         method: "POST",
         headers: { "Content-Type": "application/json", },
-        body: JSON.stringify(user)
+        body: JSON.stringify(member)
     }).then(res => res.json());
 }
 
@@ -18,21 +18,19 @@ function Login() {
     const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [user, setUser] = useState(null);
 
-    const handleLoginUser = (user) => {
+    const handleLoginMember = (member) => {
         setLoading(true);
-        loginUser(user)
-            .then((user) => {
+        loginMember(member)
+            .then((member) => {
                 setLoading(false);
-                setUser(user);
                 navigate("/");
             })
     };
 
     const onSubmit = (e) => {
         e.preventDefault();
-        return handleLoginUser({
+        return handleLoginMember({
             username,
             password,
         });
