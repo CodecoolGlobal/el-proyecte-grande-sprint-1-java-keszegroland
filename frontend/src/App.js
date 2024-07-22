@@ -1,5 +1,4 @@
 import './App.css';
-import DarkLightMode from './Components/DarkLightMode/DarkLightMode';
 import MainPage from './Pages/MainPage/MainPage';
 import { createContext, useState } from 'react';
 
