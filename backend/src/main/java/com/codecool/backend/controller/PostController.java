@@ -4,13 +4,15 @@ import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/api/posts")
+@RequestMapping("/api/post")
 public class PostController {
     private final PostService postService;
 
@@ -29,9 +31,15 @@ public class PostController {
         return postService.getPostsByMemberPublicId(memberPublicId);
     }
 
-    @PostMapping("/{memberPublicId}")
-    public UUID createPost(@PathVariable UUID memberPublicId, @RequestBody NewPostDTO postDTO) {
-        return postService.createNewPost(postDTO, memberPublicId);
+    @PostMapping
+    public UUID createPost(@RequestBody NewPostDTO postDTO, @RequestHeader("Authorization") String token ) {
+        return postService.createNewPost(postDTO, token);
+    }
+
+    @PatchMapping("/report")
+    public ResponseEntity<Void> reportPost(@RequestBody UUID postPublicId) {
+        postService.reportPost(postPublicId);
+        return ResponseEntity.status(HttpStatus.OK).build();
     }
 }
 

@@ -39,8 +39,8 @@ public class CommentService {
         }
     }
 
-    private Member getMemberForComment(UUID userId) {
-        return memberRepository.findByPublicId(userId);
+    private Member getMemberForComment(UUID memberId) {
+        return memberRepository.findByPublicId(memberId);
     }
 
     private Post getPostForComment(UUID postId) {
