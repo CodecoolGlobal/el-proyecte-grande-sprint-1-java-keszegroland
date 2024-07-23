@@ -1,11 +1,12 @@
 package com.codecool.backend.service;
 
-import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.controller.dto.NewPostDTO;
+import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.model.Member;
 import com.codecool.backend.model.Post;
-import com.codecool.backend.repository.PostRepository;
 import com.codecool.backend.repository.MemberRepository;
+import com.codecool.backend.repository.PostRepository;
+import com.codecool.backend.security.jwt.JwtUtils;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,11 +22,13 @@ public class PostService {
     private final PostRepository postRepository;
     private final MemberRepository memberRepository;
     private static final Logger logger = LoggerFactory.getLogger(PostService.class);
+    private final JwtUtils jwtUtils;
 
     @Autowired
-    public PostService(PostRepository postRepository, MemberRepository memberRepository) {
+    public PostService(PostRepository postRepository, MemberRepository memberRepository, JwtUtils jwtUtils) {
         this.postRepository = postRepository;
         this.memberRepository = memberRepository;
+        this.jwtUtils = jwtUtils;
     }
 
     public List<PostDTO> getAllPosts() {
@@ -39,10 +42,14 @@ public class PostService {
     }
 
     @Transactional
-    public UUID createNewPost(NewPostDTO newPostDTO, UUID memberPublicId) {
+    public UUID createNewPost(NewPostDTO newPostDTO, String token) {
         try {
             Post post = new Post();
-            post.setMember(getMemberByPublicId(memberPublicId));
+            String username = jwtUtils.getUsernameFromJwtToken(token.substring(7));
+            //TODO custom exception for the orElseThrow
+            //TODO ADVISER
+            Member member = memberRepository.findByUsername(username).orElseThrow();
+            post.setMember(member);
             post.setDescription(newPostDTO.description());
             post.setPicture(convertBase64Image(newPostDTO));
             postRepository.save(post);
@@ -51,6 +58,12 @@ public class PostService {
             logger.error("Error creating a new post: {} ", e.getMessage());
             throw new RuntimeException("Error creating a new post. " + e.getMessage());
         }
+    }
+
+    public void reportPost(UUID id) {
+        Post post = postRepository.findByPublicId(id);
+        post.setNumOfReport(post.getNumOfReport() + 1);
+        postRepository.save(post);
     }
 
     private byte[] convertBase64Image(NewPostDTO newPostDTO) {

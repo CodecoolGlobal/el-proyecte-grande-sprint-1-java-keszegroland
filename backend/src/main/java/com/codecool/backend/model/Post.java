@@ -28,5 +28,5 @@ public class Post {
     private LocalDateTime creationDate = LocalDateTime.now();
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
-
+    private int numOfReport;
 }
