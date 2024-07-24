@@ -41,20 +41,15 @@ public class MemberService {
     }
 
     public UUID createNewMember(NewMemberDTO memberDTO) {
-        //TODO nem kell try catch hanem controller adviser!
-        try {
-            if (memberRepository.findByUsername(memberDTO.username()).isPresent()) {
-                throw new MemberAlreadyExistsException(format("member %s already exists", memberDTO.username()));
-            }
-            Member member = new Member();
-            memberRepository.save(setMemberData(member, memberDTO, Role.ROLE_USER));
-            return member.getPublicId();
-        } catch (RuntimeException e) {
-            throw new RuntimeException("Error creating new member. " + e.getMessage());
+        if (memberRepository.findByUsername(memberDTO.username()).isPresent()) {
+            throw new MemberAlreadyExistsException(format("member %s already exists", memberDTO.username()));
         }
+        Member member = new Member();
+        memberRepository.save(setMemberData(member, memberDTO, Role.ROLE_USER));
+        return member.getPublicId();
     }
 
-    private Member setMemberData(Member member, NewMemberDTO memberDTO, Role role){
+    private Member setMemberData(Member member, NewMemberDTO memberDTO, Role role) {
         member.setFirstName(memberDTO.firstName());
         member.setLastName(memberDTO.lastName());
         member.setUsername(memberDTO.username());

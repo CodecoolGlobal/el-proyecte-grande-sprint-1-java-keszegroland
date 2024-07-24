@@ -2,6 +2,8 @@ package com.codecool.backend.service;
 
 import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.controller.dto.PostDTO;
+import com.codecool.backend.controller.dto.ReportDTO;
+import com.codecool.backend.exception.MemberIsNotFoundException;
 import com.codecool.backend.model.Member;
 import com.codecool.backend.model.Post;
 import com.codecool.backend.repository.MemberRepository;
@@ -11,6 +13,7 @@ import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Base64;
@@ -22,13 +25,11 @@ public class PostService {
     private final PostRepository postRepository;
     private final MemberRepository memberRepository;
     private static final Logger logger = LoggerFactory.getLogger(PostService.class);
-    private final JwtUtils jwtUtils;
 
     @Autowired
-    public PostService(PostRepository postRepository, MemberRepository memberRepository, JwtUtils jwtUtils) {
+    public PostService(PostRepository postRepository, MemberRepository memberRepository) {
         this.postRepository = postRepository;
         this.memberRepository = memberRepository;
-        this.jwtUtils = jwtUtils;
     }
 
     public List<PostDTO> getAllPosts() {
@@ -42,13 +43,13 @@ public class PostService {
     }
 
     @Transactional
-    public UUID createNewPost(NewPostDTO newPostDTO, String token) {
+    public UUID createNewPost(NewPostDTO newPostDTO) {
         try {
             Post post = new Post();
-            String username = jwtUtils.getUsernameFromJwtToken(token.substring(7));
-            //TODO custom exception for the orElseThrow
-            //TODO ADVISER
-            Member member = memberRepository.findByUsername(username).orElseThrow();
+            System.out.println();
+            String username = SecurityContextHolder.getContext().getAuthentication().getName();
+            Member member = memberRepository.findByUsername(username)
+                    .orElseThrow(() -> new MemberIsNotFoundException("Member could not be found in the database."));
             post.setMember(member);
             post.setDescription(newPostDTO.description());
             post.setPicture(convertBase64Image(newPostDTO));
@@ -60,8 +61,9 @@ public class PostService {
         }
     }
 
-    public void reportPost(UUID id) {
-        Post post = postRepository.findByPublicId(id);
+    public void reportPost(ReportDTO reportDto) {
+        UUID postPublicId = UUID.fromString(reportDto.postPublicId());
+        Post post = postRepository.findByPublicId(postPublicId);
         post.setNumOfReport(post.getNumOfReport() + 1);
         postRepository.save(post);
     }
