@@ -6,6 +6,7 @@ import { IoCreate } from "react-icons/io5";
 import logo from "../../blackLogo.PNG";
 import { useEffect, useState } from "react";
 
+
 function MainPage() {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
 

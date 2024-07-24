@@ -8,7 +8,7 @@ import { MdAlternateEmail } from "react-icons/md";
 
 
 function createMember(member) {
-	return fetch("/api/members/signUp", {
+	return fetch("/api/member/signUp", {
 		method: "POST",
 		headers: { "Content-Type": "application/json", },
 		body: JSON.stringify(member),
