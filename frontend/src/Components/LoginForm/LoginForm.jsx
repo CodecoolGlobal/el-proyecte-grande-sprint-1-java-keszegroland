@@ -6,7 +6,7 @@ import Loading from "../Loading/Loading";
 import { FaLock, FaUser } from "react-icons/fa";
 
 const loginMember = (member) => {
-    return fetch("/api/members/login", {
+    return fetch("/api/member/login", {
         method: "POST",
         headers: { "Content-Type": "application/json", },
         body: JSON.stringify(member)
@@ -23,6 +23,7 @@ function Login() {
         setLoading(true);
         loginMember(member)
             .then((member) => {
+                localStorage.setItem("jwtToken", member.jwt)
                 setLoading(false);
                 navigate("/");
             })

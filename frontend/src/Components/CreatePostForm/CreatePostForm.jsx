@@ -4,21 +4,27 @@ import "../FormStyling.css";
 import Loading from "../Loading/Loading";
 import { useNavigate } from "react-router";
 import FileUploader from "./FileUploader/FileUploader";
+import { useGetToken } from "../CustomHook/CustomHook";
 
-function createPost(post, memberPublicId) {
-	return fetch(`/api/posts/${memberPublicId}`, {
+async function createPost(post, token) {
+	const res = await fetch("/api/post", {
 		method: "POST",
-		headers: { "Content-Type": "application/json", },
+		headers: {
+			"Content-Type": "application/json",
+			"Authorization": "Bearer " + token
+		},
 		body: JSON.stringify(post),
-	}).then((res) => res.json());
+	});
+	const data = await res.json();
+	return data;
 };
 
 function CreatePostForm() {
 	const navigate = useNavigate();
 	const [loading, setLoading] = useState(false);
-	const memberId = "2079a96b-e3ab-42de-8e9d-5be19e09d298";
 	const [description, setDescription] = useState("");
 	const [picture, setPicture] = useState(null);
+	const token = useGetToken();
 
 	const handleCreatePost = (e) => {
 		e.preventDefault();
@@ -27,7 +33,7 @@ function CreatePostForm() {
 			description: description,
 			picture: picture
 		};
-		createPost(post, memberId)
+		createPost(post, token)
 			.then(() => {
 				setLoading(false);
 				navigate("/");

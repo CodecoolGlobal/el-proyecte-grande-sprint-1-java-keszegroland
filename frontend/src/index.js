@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import MainPage from './Pages/MainPage/MainPage';
 import SignUp from './Pages/SignUp/SignUp';
 import CreatePost from './Pages/CreatePost/CreatePost';
 import Login from './Pages/Login/Login';
