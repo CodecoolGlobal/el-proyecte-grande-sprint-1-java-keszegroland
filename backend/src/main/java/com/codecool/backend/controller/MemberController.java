@@ -6,6 +6,7 @@ import com.codecool.backend.controller.dto.NewMemberDTO;
 import com.codecool.backend.model.Member;
 import com.codecool.backend.service.AdminService;
 import com.codecool.backend.service.MemberService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -36,5 +37,12 @@ public class MemberController {
     }
 
 
+
+    @DeleteMapping("/delete/{publicId}")
+    @Transactional
+    public ResponseEntity<UUID> deleteMemberByPublicId(@PathVariable UUID publicId) {
+        adminService.deleteMemberByPublicId(publicId);
+        return ResponseEntity.ok(publicId);
+    }
 
 }

@@ -5,8 +5,8 @@ import com.codecool.backend.exception.MemberIsNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-@org.springframework.web.bind.annotation.ControllerAdvice
-public class ControllerAdvice {
+@ControllerAdvice
+public class StringsControllerAdvice {
     @ResponseBody
     @ExceptionHandler(MemberAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
