@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../../Pages/MainPage/MainPage.css";
+import "./logout.css"
 
 
 

@@ -163,7 +163,7 @@
 
 @media (max-width: 576px) {
     .cloud {
-        width: 100%;
+        /* width: 100%; */
         max-width: 100%;
         max-height: none;
         padding: 10px;

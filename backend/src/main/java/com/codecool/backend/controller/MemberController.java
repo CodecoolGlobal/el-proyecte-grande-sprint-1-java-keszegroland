@@ -35,10 +35,6 @@ public class MemberController {
         return ResponseEntity.ok(memberService.loginMember(member));
     }
 
-    @GetMapping("/getAll")
-    public List<MemberDTO> getAllMember() {
-        return adminService.getAllMember();
-    }
     @PutMapping("/promote/{username}")
     public ResponseEntity<Member> promoteUserToAdmin(@PathVariable String username) {
         return memberService.promoteUserToAdmin(username);

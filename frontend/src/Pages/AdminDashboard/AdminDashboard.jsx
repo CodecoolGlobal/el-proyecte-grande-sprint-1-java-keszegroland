@@ -4,7 +4,7 @@ import UsersTable from "../../Components/UserTable/UsersTable";
 import { useGetToken } from "../../Components/CustomHook/CustomHook";
 
 async function fetchMembers(token) {
-  const response = await fetch("/api/member/getAll", {
+  const response = await fetch("/admin/getAll", {
     headers: {
       'Authorization': `Bearer ${token}`
     }
