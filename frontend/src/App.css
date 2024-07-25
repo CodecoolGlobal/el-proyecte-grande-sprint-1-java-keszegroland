@@ -38,7 +38,8 @@
 
     #light .signupEmblem,
     #light .homeEmblem,
-    #light .createAnswerEmblem {
+    #light .createAnswerEmblem,
+    #light .logoutEmblem {
         color: black;
     }
 
@@ -48,7 +49,8 @@
 
     #dark .signupEmblem,
     #dark .homeEmblem,
-    #dark .createAnswerEmblem {
+    #dark .createAnswerEmblem,
+    #dark .logoutEmblem {
         color: white;
     }
 
@@ -82,7 +84,8 @@
 
     #light .signupEmblem,
     #light .homeEmblem,
-    #light .createAnswerEmblem {
+    #light .createAnswerEmblem,
+    #light .logoutEmblem {
         color: black;
     }
 
@@ -93,7 +96,8 @@
 
     #dark .signupEmblem,
     #dark .homeEmblem,
-    #dark .createAnswerEmblem {
+    #dark .createAnswerEmblem,
+    #dark .logoutEmblem {
         color: white;
     }
 
@@ -151,5 +155,14 @@
 }
 
 #dark .homeFeed {
+    color: white;
+}
+
+#light .threeDot {
+    background: none;
+}
+
+#dark .threeDot {
+    background: none;
     color: white;
 }
