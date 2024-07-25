@@ -4,6 +4,7 @@ import Loading from "../Loading/Loading";
 import OnePost from "./OnePost";
 import cloud from "../../cloudy.png";
 import { useGetToken } from "../CustomHook/CustomHook";
+import { ToastContainer } from 'react-toastify';
 
 const fetchPosts = async (token) => {
 	const res = await fetch('/api/post', {
@@ -48,6 +49,18 @@ function Post() {
 					<img src={cloud} alt="cloud" className="cloud"></img>
 				</section>
 			))}
+			<ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+				theme="light"
+			/>
 		</div>
 	)
 }

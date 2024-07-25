@@ -2,27 +2,29 @@ import { Link } from "react-router-dom";
 import Post from "../../Components/Post/Post";
 import "./MainPage.css";
 import { FaHome, FaUserTie } from "react-icons/fa";
+import { TbLogout } from "react-icons/tb";
 import { IoCreate } from "react-icons/io5";
 import logo from "../../blackLogo.PNG";
 import { useEffect, useState } from "react";
 import { useGetToken } from "../../Components/CustomHook/CustomHook";
 
-
-
 function MainPage() {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-
-
+  const navigate = useNavigate();
+  
   useEffect(() => {
     const handleResize = () => setInnerWidth(window.innerWidth)
-
-
+    
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
     };
   }, [])
 
+  const handleLogout = () => {
+    localStorage.removeItem('jwtToken');
+    navigate('/login');
+  }
 
   return (
     <div className="MainPage">
