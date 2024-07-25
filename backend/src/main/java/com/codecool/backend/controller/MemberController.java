@@ -36,13 +36,4 @@ public class MemberController {
         return ResponseEntity.ok(memberService.loginMember(member));
     }
 
-
-
-    @DeleteMapping("/delete/{publicId}")
-    @Transactional
-    public ResponseEntity<UUID> deleteMemberByPublicId(@PathVariable UUID publicId) {
-        adminService.deleteMemberByPublicId(publicId);
-        return ResponseEntity.ok(publicId);
-    }
-
 }

@@ -4,7 +4,7 @@ import { BsPostageFill } from "react-icons/bs";
 import { TbLogout } from "react-icons/tb";
 import { useNavigate } from "react-router-dom";
 
-function AdminNavBar() {
+function AdminNavBar({ onHandlePageState }) {
   const navigate = useNavigate("");
 
   function handleLogout() {
@@ -15,11 +15,11 @@ function AdminNavBar() {
   return <div className="admin-nav-bar">
     <h1 className="navbar-header">Dashboard</h1>
     <ul>
-      <li>
+      <li onClick={() => onHandlePageState("users")}>
         <FaTable className="icon" />
         <span>Users</span>
       </li>
-      <li>
+      <li onClick={() => onHandlePageState("reportedPosts")}>
         <BsPostageFill className="icon" />
         <span>Posts</span>
       </li>

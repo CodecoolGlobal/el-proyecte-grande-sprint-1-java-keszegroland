@@ -1,0 +1,17 @@
+.user-table-container {
+  margin: auto;
+  width: 90%;
+  padding-left: 10px;
+  padding-right: 10px;
+  color: black;
+  max-height: 100%;
+  box-sizing: border-box;
+  margin-bottom: 40px;
+}
+
+.promote-button {
+  all: unset;
+  color: rgb(0, 157, 10);
+  font-weight: bold;
+  cursor: pointer;
+}
