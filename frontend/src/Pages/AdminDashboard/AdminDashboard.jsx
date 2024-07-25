@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import AdminNavBar from "../../Components/AdminNavBar/AdminNavBar";
 import UsersTable from "../../Components/UserTable/UsersTable";
 import { useGetToken } from "../../Components/CustomHook/CustomHook";
+import "./adminDashboard.css";
 
 async function fetchMembers(token) {
   const response = await fetch("/api/member/getAll", {
     headers: {
+      "Content-Type": "application/json",
       'Authorization': `Bearer ${token}`
     }
   });
@@ -13,7 +15,7 @@ async function fetchMembers(token) {
 }
 
 async function promoteToAdmin(username, token) {
-  const response = await fetch(`/api/member/promote/${username}`, {
+  const response = await fetch(`/api/admin/promote/${username}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

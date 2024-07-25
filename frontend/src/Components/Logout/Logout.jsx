@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import "../../Pages/MainPage/MainPage.css";
 
-
-
 function Logout({ innerWidth }) {
     const navigate = useNavigate();
     const handleLogout = () => {

@@ -2,11 +2,14 @@ package com.codecool.backend.service;
 
 import com.codecool.backend.controller.dto.MemberDTO;
 import com.codecool.backend.controller.dto.PostDTO;
+import com.codecool.backend.exception.MemberIsNotFoundException;
 import com.codecool.backend.model.Member;
 import com.codecool.backend.model.Post;
+import com.codecool.backend.model.Role;
 import com.codecool.backend.repository.MemberRepository;
 import com.codecool.backend.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -39,5 +42,12 @@ public class AdminService {
                 .stream()
                 .map(this::convertMemberToDTO)
                 .toList();
+    }
+
+    public ResponseEntity<Member> promoteUserToAdmin(String username) {
+        Member member = memberRepository.findByUsername(username).orElseThrow(() -> new MemberIsNotFoundException("Member not found"));
+        member.addRole(Role.ROLE_ADMIN);
+        memberRepository.save(member);
+        return ResponseEntity.ok(member);
     }
 }

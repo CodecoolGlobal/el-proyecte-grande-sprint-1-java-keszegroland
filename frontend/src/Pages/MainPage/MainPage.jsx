@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Post from "../../Components/Post/Post";
 import "./MainPage.css";
 import { FaHome, FaUserTie } from "react-icons/fa";
@@ -11,10 +11,10 @@ import { useGetToken } from "../../Components/CustomHook/CustomHook";
 function MainPage() {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
-  
+
   useEffect(() => {
     const handleResize = () => setInnerWidth(window.innerWidth)
-    
+
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
