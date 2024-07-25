@@ -1,6 +1,6 @@
 import "./usersTable.css";
 
-function UsersTable({ members }) {
+function UsersTable({ members, onPromote }) {
 
   return <div className="user-table-container">
     <table>
@@ -19,8 +19,8 @@ function UsersTable({ members }) {
             <td>{member?.publicId}</td>
             <td>{member?.firstName} {member?.lastName} {member?.email}</td>
             <td>{member?.username}</td>
-            {member?.roles?.map((role) => <td key={role}>{role}</td>)}
-            <td><button>Delete</button><button>Update</button></td>
+            <td>{member?.roles?.map((role) => `${role} `)}</td>
+            <td><button>Delete</button><button>Update</button><button type="button" onClick={() => onPromote(member.username)}>Promote to Admin</button></td>
           </tr>
         ))}
       </tbody>
