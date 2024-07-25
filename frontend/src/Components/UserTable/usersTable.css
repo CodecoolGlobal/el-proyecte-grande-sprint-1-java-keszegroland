@@ -82,3 +82,10 @@ table .email {
   font-weight: bold;
   cursor: pointer;
 }
+
+.promote-button {
+  all: unset;
+  color: rgb(0, 157, 10);
+  font-weight: bold;
+  cursor: pointer;
+}

@@ -1,14 +1,17 @@
 package com.codecool.backend.service;
 
+import com.codecool.backend.controller.dto.MemberDTO;
 import com.codecool.backend.controller.dto.MemberLoginDTO;
 import com.codecool.backend.controller.dto.NewMemberDTO;
 import com.codecool.backend.exception.MemberAlreadyExistsException;
+import com.codecool.backend.exception.MemberIsNotFoundException;
 import com.codecool.backend.model.Member;
 import com.codecool.backend.model.Role;
 import com.codecool.backend.model.payload.JwtResponse;
 import com.codecool.backend.repository.MemberRepository;
 import com.codecool.backend.security.jwt.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,7 +21,6 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;

@@ -38,4 +38,5 @@ public class MemberController {
     public List<MemberDTO> getAllMember() {
         return adminService.getAllMember();
     }
+
 }

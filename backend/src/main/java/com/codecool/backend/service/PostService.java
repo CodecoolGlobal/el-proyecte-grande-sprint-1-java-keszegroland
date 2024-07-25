@@ -61,11 +61,13 @@ public class PostService {
         }
     }
 
+    @Transactional
     public void reportPost(ReportDTO reportDto) {
-        UUID postPublicId = UUID.fromString(reportDto.postPublicId());
-        Post post = postRepository.findByPublicId(postPublicId);
+        Post post = postRepository.findByPublicId(reportDto.postPublicId());
+        if (post != null) {
         post.setNumOfReport(post.getNumOfReport() + 1);
         postRepository.save(post);
+        }
     }
 
     private byte[] convertBase64Image(NewPostDTO newPostDTO) {
