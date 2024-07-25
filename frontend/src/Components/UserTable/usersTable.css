@@ -1,0 +1,26 @@
+table {
+  width: 80%;
+  background-color: #FFFFFF;
+  border-collapse: collapse;
+  border-width: 2px;
+  border-color: #7EA8F8;
+  border-style: solid;
+  color: #000000;
+  margin: 0 auto;
+}
+
+table td,
+table th {
+  border-width: 2px;
+  border-color: #7EA8F8;
+  border-style: solid;
+  padding: 5px;
+}
+
+table thead {
+  background-color: #7EA8F8;
+}
+
+table tr {
+  text-align: left;
+}
