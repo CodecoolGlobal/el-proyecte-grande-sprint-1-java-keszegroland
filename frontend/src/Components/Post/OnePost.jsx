@@ -5,11 +5,13 @@ import { formatDistanceToNowStrict } from 'date-fns';
 import { FaRegPaperPlane } from "react-icons/fa";
 import HeartAnimation from "./HeartAnimation";
 import "./Post.css";
+import Options from "./Options";
 
 function OnePost({ post }) {
     const [isAnimating, setIsAnimating] = useState(false);
     const [likes, setLikes] = useState(0);
     const [isLiked, setIsLiked] = useState(false);
+    const [clicked, setClicked] = useState(false);
 
     const handleLike = () => {
         setIsLiked(!isLiked);
@@ -24,13 +26,19 @@ function OnePost({ post }) {
         }, 800);
     }
 
+    const handleClick = () => {
+        setClicked(!clicked)
+    }
+
     const handlePostComment = () => {
 
     }
     return (
-        <div key={post.creationDate} className="onePost" onDoubleClick={handleDoubleClick}>
+        <div key={post.publicId} className="onePost" >
             <p className="username"><b>{post.username}</b> ~ <i><span>{formatDistanceToNowStrict(post.creationDate)}</span> ago</i></p>
-            <div className="photoDiv">
+            <button className="threeDot" onClick={handleClick}>...</button>
+            {clicked ? <Options postId={post.publicId} /> : <span></span>}
+            <div className="photoDiv" onDoubleClick={handleDoubleClick}>
                 <HeartAnimation isAnimating={isAnimating} />
                 <img
                     className="images"

@@ -50,7 +50,8 @@ section {
 
     .signupEmblem,
     .homeEmblem,
-    .createAnswerEmblem {
+    .createAnswerEmblem,
+    .logoutEmblem {
         padding: 5px;
         font-size: 30px;
         cursor: pointer;
@@ -82,7 +83,8 @@ section {
 
     .signupEmblem,
     .homeEmblem,
-    .createAnswerEmblem {
+    .createAnswerEmblem,
+    .logoutEmblem {
         padding: 5px;
         left: 0;
         font-size: 30px;

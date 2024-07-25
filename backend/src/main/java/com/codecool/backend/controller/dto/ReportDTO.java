@@ -1,3 +1,5 @@
 package com.codecool.backend.controller.dto;
 
-public record ReportDTO(String postPublicId) {}
+import java.util.UUID;
+
+public record ReportDTO(UUID postPublicId) {}

@@ -181,3 +181,41 @@
 .allComment {
     padding-left: 10px;
 }
+
+/* options */
+
+.threeDot {
+    position: absolute;
+    right: 0%;
+    top: 1%;
+    margin-right: 20px;
+    background-color: white;
+    font-size: x-large;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+
+.options {
+    position: absolute;
+    right: 5%;
+    top: 6%;
+    z-index: 10;
+    /* background: linear-gradient(to top, rgb(0, 237, 255), rgb(255, 119, 244)); */
+    background-color: rgb(85, 244, 210);
+    width: 30%;
+}
+
+.reportButton {
+    padding: 5%;
+    width: 100%;
+    background: none;
+    border: 1px solid #8f54a0;
+    color: black;
+    font-weight: bolder;
+    cursor: pointer;
+}
+
+.reportButton:hover {
+    background-color: rgb(170, 255, 227);
+}
