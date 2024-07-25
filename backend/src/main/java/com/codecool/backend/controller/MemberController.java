@@ -5,10 +5,7 @@ import com.codecool.backend.controller.dto.NewMemberDTO;
 import com.codecool.backend.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -32,5 +29,9 @@ public class MemberController {
         return ResponseEntity.ok(memberService.loginMember(member));
     }
 
+    @PutMapping("/promote/{username}")
+    public ResponseEntity<Void> promoteUserToAdmin(@PathVariable String username) {
+        return memberService.promoteUserToAdmin(username);
+    }
 
 }
