@@ -70,14 +70,4 @@ public class MemberService {
         return new JwtResponse(jwt, userDetails.getUsername(), roles);
     }
 
-    private MemberDTO convertMemberToDTO(Member member) {
-        return new MemberDTO(member.getPublicId(), member.getFirstName(), member.getLastName(), member.getUsername(), member.getEmail(), member.getRoles());
-    }
-
-    public ResponseEntity<Member> promoteUserToAdmin(String username) {
-        Member member = memberRepository.findByUsername(username).orElseThrow(() -> new MemberIsNotFoundException("Member not found"));
-        member.addRole(Role.ROLE_ADMIN);
-        memberRepository.save(member);
-        return ResponseEntity.ok(member);
-    }
 }

@@ -22,7 +22,7 @@ public class PostController {
         this.postService = postService;
     }
 
-    @GetMapping
+    @GetMapping("/getAll")
     public List<PostDTO> getAllPosts() {
         return postService.getAllPosts();
     }
@@ -32,7 +32,7 @@ public class PostController {
         return postService.getPostsByMemberPublicId(memberPublicId);
     }
 
-    @PostMapping
+    @PostMapping("/create")
     public UUID createPost(@RequestBody NewPostDTO postDTO) {
         return postService.createNewPost(postDTO);
     }

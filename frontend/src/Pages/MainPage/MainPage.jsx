@@ -10,6 +10,14 @@ function MainPage() {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const handleResize = () => setInnerWidth(window.innerWidth)
+
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+    };
+  }, [])
 
   const handleLogout = () => {
     localStorage.removeItem('jwtToken');

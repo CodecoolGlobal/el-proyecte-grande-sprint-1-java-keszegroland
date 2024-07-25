@@ -35,9 +35,6 @@ public class MemberController {
         return ResponseEntity.ok(memberService.loginMember(member));
     }
 
-    @PutMapping("/promote/{username}")
-    public ResponseEntity<Member> promoteUserToAdmin(@PathVariable String username) {
-        return memberService.promoteUserToAdmin(username);
-    }
+
 
 }
