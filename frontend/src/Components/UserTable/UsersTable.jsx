@@ -3,6 +3,7 @@ import "./usersTable.css";
 function UsersTable({ members }) {
 
   return <div className="user-table-container">
+    <h1 className="table-header">Members</h1>
     <table>
       <thead>
         <tr>
@@ -17,10 +18,10 @@ function UsersTable({ members }) {
         {members?.map((member) => (
           <tr key={member?.publicId}>
             <td>{member?.publicId}</td>
-            <td>{member?.firstName} {member?.lastName} {member?.email}</td>
+            <td><p className="full-name">{member?.firstName} {member?.lastName}</p> <span className="email">{member?.email}</span></td>
             <td>{member?.username}</td>
             {member?.roles?.map((role) => <td key={role}>{role}</td>)}
-            <td><button>Delete</button><button>Update</button></td>
+            <td><button className="delete-button">Delete</button></td>
           </tr>
         ))}
       </tbody>

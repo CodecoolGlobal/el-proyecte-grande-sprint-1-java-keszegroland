@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import AdminNavBar from "../../Components/AdminNavBar/AdminNavBar";
 import UsersTable from "../../Components/UserTable/UsersTable";
+import "./adminDashboard.css";
 
 async function fetchMembers() {
   const token = localStorage.getItem("token");
