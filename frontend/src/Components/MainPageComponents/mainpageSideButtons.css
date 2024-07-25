@@ -1,0 +1,74 @@
+@media (min-width: 576px) {
+
+    .signupEmblem,
+    .homeEmblem,
+    .createAnswerEmblem,
+    .logoutEmblem {
+        padding: 5px;
+        font-size: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        display: block;
+        flex-direction: column;
+        z-index: 5;
+    }
+
+    .links {
+        margin-top: 130px;
+        width: 30%;
+        height: 100vh;
+        display: flex;
+        position: fixed;
+        top: 0;
+        flex-direction: column;
+        z-index: 5;
+    }
+
+    .linkDiv {
+        display: block;
+        padding-bottom: 20px;
+        padding-left: 10px;
+    }
+
+    .logOutBtn {
+        position: fixed;
+        top: 90vh;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .signupEmblem,
+    .homeEmblem,
+    .createAnswerEmblem,
+    .logoutEmblem {
+        padding: 5px;
+        left: 0;
+        font-size: 30px;
+        cursor: pointer;
+        text-decoration: none;
+        flex-direction: row;
+        text-wrap: wrap;
+    }
+
+    .links {
+        width: 100vw;
+        padding: 5px;
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0;
+        display: flex;
+        z-index: 5;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .link-text {
+        display: inline-block;
+        visibility: hidden;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
