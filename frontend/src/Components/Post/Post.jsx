@@ -3,24 +3,37 @@ import "./Post.css";
 import Loading from "../Loading/Loading";
 import OnePost from "./OnePost";
 import cloud from "../../cloudy.png";
+import { useGetToken } from "../CustomHook/CustomHook";
 
-const fetchPosts = () => {
-	return fetch('/api/posts').then(res => res.json());
+const fetchPosts = async (token) => {
+	const res = await fetch('/api/post', {
+		method: "GET",
+		headers: { "Authorization": `Bearer ${token}` },
+	});
+	const data = await res.json();
+	return data;
 }
 
 
 function Post() {
 	const [posts, setPosts] = useState([])
 	const [loading, setLoading] = useState(false);
+	const token = useGetToken()
 
 	useEffect(() => {
 		setLoading(true);
-		fetchPosts()
-			.then(posts => {
-				setPosts(posts)
-				setLoading(false);
-			})
-	}, []);
+		// fetchPosts(token)
+		// 	.then(posts => {
+		// 		setPosts(posts)
+		// 		setLoading(false);
+		// 	})
+		const fetchMainPosts = async () => {
+			const data = await fetchPosts(token);
+			setPosts(data);
+			setLoading(false);
+		}
+		fetchMainPosts();
+	}, [token]);
 
 	if (loading) {
 		return <Loading />
