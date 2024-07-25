@@ -62,6 +62,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(auth ->
                         auth.requestMatchers("/api/member/**").permitAll()
                                 .requestMatchers("/api/admin/**").hasRole("ADMIN")
+                                .requestMatchers("/api/member/delete/**").permitAll()
                                 .requestMatchers("/api/post/**").hasRole("USER")
                                 .requestMatchers("/api/comment/**").hasRole("USER")
                 );

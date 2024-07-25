@@ -1,6 +1,6 @@
 import "./usersTable.css";
 
-function UsersTable({ members, onPromote }) {
+function UsersTable({ members, onPromote, onDelete }) {
 
   return <div className="user-table-container">
     <h1 className="table-header">Members</h1>
@@ -22,8 +22,8 @@ function UsersTable({ members, onPromote }) {
             <td>{member?.username}</td>
             <td>{member?.roles?.map((role) => `${role} `)}</td>
             <td>
-              <button type="button" className="delete-button">Delete</button>
-              <button type="button" className="promote-button" onClick={() => onPromote(member.username)}>Promote to Admin</button>
+              <button type="button" className="delete-button" onClick={() => onDelete(member?.publicId)}>Delete</button>
+              <button type="button" className="promote-button" onClick={() => onPromote(member?.username)}>Promote to Admin</button>
             </td>
           </tr>
         ))}

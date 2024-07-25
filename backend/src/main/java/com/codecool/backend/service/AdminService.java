@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class AdminService {
@@ -49,5 +50,9 @@ public class AdminService {
         member.addRole(Role.ROLE_ADMIN);
         memberRepository.save(member);
         return ResponseEntity.ok(member);
+    }
+
+    public void deleteMemberByPublicId(UUID publicId) {
+        memberRepository.deleteByPublicId(publicId);
     }
 }
