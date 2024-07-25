@@ -31,6 +31,8 @@ public class Member {
     private Set<Role> roles = new HashSet<>();
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Comment> comments;
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Report> reports;
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Post> posts;

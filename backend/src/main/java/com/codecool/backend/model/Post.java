@@ -28,6 +28,8 @@ public class Post {
     private LocalDateTime creationDate = LocalDateTime.now();
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments;
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Report> reports;
     private int numOfReport;
 
 }
