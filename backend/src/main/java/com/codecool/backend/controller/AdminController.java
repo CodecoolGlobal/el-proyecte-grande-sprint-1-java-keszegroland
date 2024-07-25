@@ -1,5 +1,6 @@
 package com.codecool.backend.controller;
 
+import com.codecool.backend.controller.dto.MemberDTO;
 import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.model.Member;
 import com.codecool.backend.service.AdminService;
