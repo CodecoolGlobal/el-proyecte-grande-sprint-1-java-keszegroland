@@ -1,6 +1,5 @@
 package com.codecool.backend.service;
 
-import com.codecool.backend.controller.dto.MemberDTO;
 import com.codecool.backend.controller.dto.MemberLoginDTO;
 import com.codecool.backend.controller.dto.NewMemberDTO;
 import com.codecool.backend.exception.MemberAlreadyExistsException;
@@ -19,6 +18,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -68,7 +68,4 @@ public class MemberService {
         return new JwtResponse(jwt, userDetails.getUsername(), roles);
     }
 
-    private MemberDTO convertMemberToDTO(Member member) {
-        return new MemberDTO(member.getPublicId(), member.getFirstName(), member.getLastName(), member.getUsername(), member.getEmail());
-    }
 }
