@@ -71,13 +71,13 @@ public class MemberService {
     }
 
     private MemberDTO convertMemberToDTO(Member member) {
-        return new MemberDTO(member.getPublicId(), member.getFirstName(), member.getLastName(), member.getUsername(), member.getEmail());
+        return new MemberDTO(member.getPublicId(), member.getFirstName(), member.getLastName(), member.getUsername(), member.getEmail(), member.getRoles());
     }
 
-    public ResponseEntity<Void> promoteUserToAdmin(String username) {
+    public ResponseEntity<Member> promoteUserToAdmin(String username) {
         Member member = memberRepository.findByUsername(username).orElseThrow(() -> new MemberIsNotFoundException("Member not found"));
         member.addRole(Role.ROLE_ADMIN);
         memberRepository.save(member);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(member);
     }
 }

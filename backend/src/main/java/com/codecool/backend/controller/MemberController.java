@@ -1,22 +1,28 @@
 package com.codecool.backend.controller;
 
+import com.codecool.backend.controller.dto.MemberDTO;
 import com.codecool.backend.controller.dto.MemberLoginDTO;
 import com.codecool.backend.controller.dto.NewMemberDTO;
+import com.codecool.backend.model.Member;
+import com.codecool.backend.service.AdminService;
 import com.codecool.backend.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/member")
 public class MemberController {
     private final MemberService memberService;
+    private final AdminService adminService;
 
     @Autowired
-    public MemberController(MemberService memberService) {
+    public MemberController(MemberService memberService, AdminService adminService) {
         this.memberService = memberService;
+        this.adminService = adminService;
     }
 
     @PostMapping("/signUp")
@@ -29,8 +35,12 @@ public class MemberController {
         return ResponseEntity.ok(memberService.loginMember(member));
     }
 
+    @GetMapping("/getAll")
+    public List<MemberDTO> getAllMember() {
+        return adminService.getAllMember();
+    }
     @PutMapping("/promote/{username}")
-    public ResponseEntity<Void> promoteUserToAdmin(@PathVariable String username) {
+    public ResponseEntity<Member> promoteUserToAdmin(@PathVariable String username) {
         return memberService.promoteUserToAdmin(username);
     }
 

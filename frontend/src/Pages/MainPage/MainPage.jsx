@@ -7,21 +7,11 @@ import logo from "../../blackLogo.PNG";
 import { useEffect, useState } from "react";
 import { useGetToken } from "../../Components/CustomHook/CustomHook";
 
-function promoteToAdmin(username, token) {
-  return fetch(`/api/member/promote/${username}`, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + token
-    }
-  }).then(res => res.json());
-
-}
 
 
 function MainPage() {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
-  const token = useGetToken();
+
 
   useEffect(() => {
     const handleResize = () => setInnerWidth(window.innerWidth)
@@ -33,9 +23,6 @@ function MainPage() {
     };
   }, [])
 
-  const handleAdminPromotion = () => {
-    promoteToAdmin()
-  }
 
   return (
     <div className="MainPage">
@@ -65,7 +52,6 @@ function MainPage() {
         <div className="linkDiv"><Link to={'/'} className='homeEmblem'><FaHome className="homepage-icon" /><span className="link-text">{innerWidth > 576 ? " Home page" : ""}</span></Link></div>
         <div className="linkDiv"><Link to={'/posts/create'} className='createAnswerEmblem'><IoCreate /><span className="link-text">{innerWidth > 576 ? " Create new Post" : ""}</span></Link></div>
         <div className="linkDiv"><Link to={'/signup'} className='signupEmblem'><FaUserTie /><span className="link-text">{innerWidth > 576 ? " Sign up" : ""}</span></Link></div>
-        <div><button type="button" onClick={handleAdminPromotion}>Promote to Admin</button></div>
       </div>
     </div >
   );
