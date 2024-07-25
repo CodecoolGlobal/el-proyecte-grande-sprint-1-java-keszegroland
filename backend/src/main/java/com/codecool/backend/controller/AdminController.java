@@ -24,6 +24,10 @@ public class AdminController {
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }
+    @GetMapping("/getAll")
+    public List<MemberDTO> getAllMember() {
+        return adminService.getAllMember();
+    }
 
     @GetMapping("/posts")
     public List<PostDTO> getReportedPosts() {
@@ -35,4 +39,6 @@ public class AdminController {
     public ResponseEntity<Member> promoteUserToAdmin(@PathVariable String username) {
         return adminService.promoteUserToAdmin(username);
     }
+
+
 }

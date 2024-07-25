@@ -11,6 +11,7 @@ import com.codecool.backend.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.Arrays;
 import java.util.List;
@@ -36,6 +37,8 @@ public class AdminService {
     private MemberDTO convertMemberToDTO(Member member) {
         return new MemberDTO(member.getPublicId(), member.getFirstName(), member.getLastName(), member.getUsername(), member.getEmail(), member.getRoles());
     }
+
+
 
     public List<MemberDTO> getAllMember() {
         return memberRepository.findAll()
