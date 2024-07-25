@@ -4,6 +4,7 @@ import "../FormStyling.css";
 import { Link, useNavigate } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import { FaLock, FaUser } from "react-icons/fa";
+import { useAuth } from "../../AuthProvider";
 
 const loginMember = (member) => {
     return fetch("/api/member/login", {
@@ -18,12 +19,16 @@ function Login() {
     const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const { login } = useAuth();
 
     const handleLoginMember = (member) => {
         setLoading(true);
         loginMember(member)
             .then((member) => {
                 localStorage.setItem("jwtToken", member.jwt)
+                localStorage.setItem('user', JSON.stringify(member))
+                console.log(member)
+                login({ member })
                 setLoading(false);
                 navigate("/");
             })

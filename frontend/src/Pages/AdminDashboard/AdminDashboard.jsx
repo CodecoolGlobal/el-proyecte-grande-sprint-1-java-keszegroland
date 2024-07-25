@@ -5,7 +5,7 @@ import { useGetToken } from "../../Components/CustomHook/CustomHook";
 import "./adminDashboard.css";
 
 async function fetchMembers(token) {
-  const response = await fetch("/admin/getAll", {
+  const response = await fetch("/api/admin/getAll", {
     headers: {
       "Content-Type": "application/json",
       'Authorization': `Bearer ${token}`

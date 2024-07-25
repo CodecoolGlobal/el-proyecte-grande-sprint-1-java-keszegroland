@@ -38,8 +38,6 @@ public class AdminService {
         return new MemberDTO(member.getPublicId(), member.getFirstName(), member.getLastName(), member.getUsername(), member.getEmail(), member.getRoles());
     }
 
-
-
     public List<MemberDTO> getAllMember() {
         return memberRepository.findAll()
                 .stream()

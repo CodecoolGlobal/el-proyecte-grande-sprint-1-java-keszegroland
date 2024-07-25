@@ -5,10 +5,12 @@ import MainPageLogo from "../../Components/MainPageComponents/MainPageLogo";
 import MainPageSideButtons from "../../Components/MainPageComponents/MainPageSideButtons";
 import Post from "../../Components/Post/Post";
 import "./MainPage.css";
+import { useAuth } from "../../AuthProvider";
 
 function MainPage() {
   const [innerWidth, setInnerWidth] = useState(window.innerWidth);
   const navigate = useNavigate();
+  const { logout } = useAuth();
 
   useEffect(() => {
     const handleResize = () => setInnerWidth(window.innerWidth)
@@ -21,6 +23,8 @@ function MainPage() {
 
   const handleLogout = () => {
     localStorage.removeItem('jwtToken');
+    localStorage.removeItem('user')
+    logout()
     navigate('/login');
   }
 
