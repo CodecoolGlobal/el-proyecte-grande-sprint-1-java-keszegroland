@@ -4,11 +4,14 @@ import com.codecool.backend.controller.dto.MemberDTO;
 import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.model.Member;
 import com.codecool.backend.service.AdminService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/admin")
@@ -19,7 +22,8 @@ public class AdminController {
     public AdminController(AdminService adminService) {
         this.adminService = adminService;
     }
-    @GetMapping("/getAll")
+
+    @GetMapping("/getAllMember")
     public List<MemberDTO> getAllMember() {
         return adminService.getAllMember();
     }
@@ -29,10 +33,23 @@ public class AdminController {
         return adminService.getReportedPosts();
     }
 
-
     @PutMapping("/promote/{username}")
     public ResponseEntity<Member> promoteUserToAdmin(@PathVariable String username) {
         return adminService.promoteUserToAdmin(username);
+    }
+
+    @DeleteMapping("/deleteMember/{publicId}")
+    @Transactional
+    public ResponseEntity<UUID> deleteMemberByPublicId(@PathVariable UUID publicId) {
+        adminService.deleteMemberByPublicId(publicId);
+        return ResponseEntity.ok(publicId);
+    }
+
+    @DeleteMapping("/deletePost/{publicId}")
+    @Transactional
+    public ResponseEntity<UUID> deletePostByPublicId(@PathVariable UUID publicId) {
+        adminService.deletePostByPublicId(publicId);
+        return ResponseEntity.ok(publicId);
     }
 
 

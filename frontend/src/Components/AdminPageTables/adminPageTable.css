@@ -1,13 +1,3 @@
-.user-table-container {
-  margin: auto;
-  width: 90%;
-  padding-left: 10px;
-  padding-right: 10px;
-  color: black;
-  max-height: 90vh;
-  box-sizing: border-box;
-}
-
 table {
   width: 100%;
   border-spacing: 0;
@@ -79,13 +69,6 @@ table .email {
 .delete-button {
   all: unset;
   color: red;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.promote-button {
-  all: unset;
-  color: rgb(0, 157, 10);
   font-weight: bold;
   cursor: pointer;
 }

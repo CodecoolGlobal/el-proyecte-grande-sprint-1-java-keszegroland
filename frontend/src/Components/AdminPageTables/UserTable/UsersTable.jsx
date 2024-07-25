@@ -1,4 +1,5 @@
 import "./usersTable.css";
+import ".././adminPageTable.css";
 
 function UsersTable({ members, onPromote, onDelete }) {
 
