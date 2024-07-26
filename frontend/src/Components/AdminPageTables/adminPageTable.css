@@ -1,0 +1,74 @@
+table {
+  width: 100%;
+  border-spacing: 0;
+  border-collapse: separate;
+  border: 2px solid black;
+  border-radius: 13px;
+  overflow: hidden;
+}
+
+table td,
+table th {
+  padding: 15px 20px;
+  text-align: left;
+  border-bottom: 1px solid black;
+}
+
+table thead {
+  background-color: #7EA8F8;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+}
+
+table tbody tr {
+  background-color: #ffffff;
+  margin-bottom: 25px;
+}
+
+table td {
+  padding: 25px;
+}
+
+table td:last-child {
+  text-align: right;
+}
+
+table tr:last-child td:first-child {
+  border-bottom-left-radius: 13px;
+}
+
+table tr:last-child td:last-child {
+  border-bottom-right-radius: 13px;
+}
+
+table tr:first-child th:first-child {
+  border-top-left-radius: 13px;
+}
+
+table tr:first-child th:last-child {
+  border-top-right-radius: 13px;
+}
+
+table .full-name {
+  font-weight: bold;
+  margin: auto;
+  font-size: large;
+}
+
+table .email {
+  color: grey;
+  font-weight: bold;
+  font-size: small;
+}
+
+.table-header {
+  font-size: 40px;
+}
+
+.delete-button {
+  all: unset;
+  color: red;
+  font-weight: bold;
+  cursor: pointer;
+}

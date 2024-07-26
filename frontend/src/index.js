@@ -8,6 +8,8 @@ import CreatePost from './Pages/CreatePost/CreatePost';
 import Login from './Pages/Login/Login';
 import App from './App';
 import AdminDashboard from './Pages/AdminDashboard/AdminDashboard';
+import { AuthProvider } from './AuthProvider';
+import { ProtectedRoute } from './ProtectedRoute';
 
 const router = createBrowserRouter(
   [
@@ -31,7 +33,12 @@ const router = createBrowserRouter(
         },
         {
           path: "/admin-dashboard",
-          element: <AdminDashboard />
+          element: (
+            < ProtectedRoute role={"ROLE_ADMIN"}>
+              < AdminDashboard />
+            </ProtectedRoute >
+          )
+
         }
       ]
     }
@@ -41,7 +48,9 @@ const router = createBrowserRouter(
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}></RouterProvider>
+    <AuthProvider >
+      <RouterProvider router={router}></RouterProvider>
+    </AuthProvider>
   </React.StrictMode>
 );
 

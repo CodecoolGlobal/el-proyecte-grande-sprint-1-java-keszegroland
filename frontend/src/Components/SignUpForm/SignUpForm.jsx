@@ -31,6 +31,7 @@ function SignUpForm() {
     const member = { firstName, lastName, username, password, email };
     createMember(member)
       .then(() => {
+        localStorage.removeItem("jwtToken");
         setLoading(false);
         navigate("/");
       })

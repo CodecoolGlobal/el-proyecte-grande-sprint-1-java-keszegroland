@@ -1,7 +1,51 @@
 .admin-nav-bar {
+  width: 345px;
+  position: fixed;
+  background-color: #7EA8F8;
+  left: 0;
+  top: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.admin-nav-bar ul {
+  margin: 0;
+  padding: 0;
+  padding-top: 2rem;
+}
+
+.admin-nav-bar ul li {
   display: flex;
-  flex-direction: column;
-  height: 100vh;
-  width: 20%;
-  background-color: blueviolet;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.admin-nav-bar .icon {
+  margin-right: 1rem;
+  margin-top: 2px;
+  font-size: 15px;
+}
+
+
+.admin-nav-bar .navbar-header {
+  font-size: 40px;
+  text-align: center;
+}
+
+.admin-nav-bar li {
+  width: 100%;
+  padding: 0.5rem;
+  padding-left: 2rem;
+}
+
+.admin-nav-bar li:hover {
+  background-color: #e0e0e057;
+  border-left: 5px solid rgb(255, 255, 255);
+}
+
+.admin-nav-bar li:last-child {
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 40px;
 }

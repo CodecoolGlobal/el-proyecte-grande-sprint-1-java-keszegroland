@@ -3,8 +3,10 @@ package com.codecool.backend.controller;
 import com.codecool.backend.controller.dto.MemberDTO;
 import com.codecool.backend.controller.dto.MemberLoginDTO;
 import com.codecool.backend.controller.dto.NewMemberDTO;
+import com.codecool.backend.model.Member;
 import com.codecool.backend.service.AdminService;
 import com.codecool.backend.service.MemberService;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -34,8 +36,4 @@ public class MemberController {
         return ResponseEntity.ok(memberService.loginMember(member));
     }
 
-    @GetMapping("/getAll")
-    public List<MemberDTO> getAllMember() {
-        return adminService.getAllMember();
-    }
 }
