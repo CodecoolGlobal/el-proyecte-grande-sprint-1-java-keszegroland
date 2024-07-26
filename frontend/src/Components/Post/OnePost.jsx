@@ -6,6 +6,7 @@ import { FaRegPaperPlane } from "react-icons/fa";
 import HeartAnimation from "./HeartAnimation";
 import "./Post.css";
 import Options from "./Options";
+import Popup from "reactjs-popup";
 
 function OnePost({ post }) {
     const [isAnimating, setIsAnimating] = useState(false);
@@ -36,8 +37,8 @@ function OnePost({ post }) {
     return (
         <div key={post.publicId} className="onePost" >
             <p className="username"><b>{post.username}</b> ~ <i><span>{formatDistanceToNowStrict(post.creationDate)}</span> ago</i></p>
-            <button className="threeDot" onClick={handleClick}>...</button>
-            {clicked ? <Options postId={post.publicId} /> : <span></span>}
+            <Popup trigger={<button className="threeDot" onClick={handleClick}>...</button>} position="bottom center" closeOnDocumentClick>
+                <Options postId={post.publicId} /></Popup>
             <div className="photoDiv" onDoubleClick={handleDoubleClick}>
                 <HeartAnimation isAnimating={isAnimating} />
                 <img

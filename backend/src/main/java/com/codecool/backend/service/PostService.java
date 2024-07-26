@@ -3,11 +3,14 @@ package com.codecool.backend.service;
 import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.controller.dto.ReportDTO;
+import com.codecool.backend.exception.MemberIsAlreadyReportedException;
 import com.codecool.backend.exception.MemberIsNotFoundException;
 import com.codecool.backend.model.Member;
 import com.codecool.backend.model.Post;
+import com.codecool.backend.model.Report;
 import com.codecool.backend.repository.MemberRepository;
 import com.codecool.backend.repository.PostRepository;
+import com.codecool.backend.repository.ReportRepository;
 import com.codecool.backend.security.jwt.JwtUtils;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
@@ -24,12 +27,14 @@ import java.util.UUID;
 public class PostService {
     private final PostRepository postRepository;
     private final MemberRepository memberRepository;
+    private final ReportRepository reportRepository;
     private static final Logger logger = LoggerFactory.getLogger(PostService.class);
 
     @Autowired
-    public PostService(PostRepository postRepository, MemberRepository memberRepository) {
+    public PostService(PostRepository postRepository, MemberRepository memberRepository, ReportRepository reportRepository) {
         this.postRepository = postRepository;
         this.memberRepository = memberRepository;
+        this.reportRepository = reportRepository;
     }
 
     public List<PostDTO> getAllPosts() {
@@ -46,10 +51,7 @@ public class PostService {
     public UUID createNewPost(NewPostDTO newPostDTO) {
         try {
             Post post = new Post();
-            System.out.println();
-            String username = SecurityContextHolder.getContext().getAuthentication().getName();
-            Member member = memberRepository.findByUsername(username)
-                    .orElseThrow(() -> new MemberIsNotFoundException("Member could not be found in the database."));
+            Member member = findLoginMember();
             post.setMember(member);
             post.setDescription(newPostDTO.description());
             post.setPicture(convertBase64Image(newPostDTO));
@@ -61,13 +63,26 @@ public class PostService {
         }
     }
 
+    private Member findLoginMember() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        return memberRepository.findByUsername(username)
+                .orElseThrow(() -> new MemberIsNotFoundException("Member could not be found in the database."));
+    }
+
     @Transactional
     public void reportPost(ReportDTO reportDto) {
         Post post = postRepository.findByPublicId(reportDto.postPublicId());
-        if (post != null) {
-        post.setNumOfReport(post.getNumOfReport() + 1);
-        postRepository.save(post);
+        Member member = findLoginMember();
+        if (reportRepository.findReportByMemberAndPostId(member, post.getId()).isPresent()) {
+            throw new MemberIsAlreadyReportedException("Member already have a report in this post.");
         }
+            Report report = new Report();
+            report.setMember(member);
+            report.setPost(post);
+            report.setReasonOfReport(reportDto.reason());
+            reportRepository.save(report);
+            post.setNumOfReport(post.getReports().size());
+            postRepository.save(post);
     }
 
     private byte[] convertBase64Image(NewPostDTO newPostDTO) {
