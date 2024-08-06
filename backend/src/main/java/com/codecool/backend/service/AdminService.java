@@ -52,7 +52,7 @@ public class AdminService {
     }
 
     @Transactional
-    public ResponseEntity<Member> promoteUserToAdmin(String username) {
+    public UUID promoteUserToAdmin(String username) {
         Member member = memberRepository.findByUsername(username).orElseThrow(() -> new MemberIsNotFoundException("Member not found"));
 
         Optional<MemberRole> adminRole = memberRoleRepository.findByRole(Role.ROLE_ADMIN);
