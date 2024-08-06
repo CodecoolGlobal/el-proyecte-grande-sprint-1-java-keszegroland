@@ -37,15 +37,15 @@ public class AdminController {
     }
 
     @DeleteMapping("/deleteMember/{publicId}")
-    public ResponseEntity<UUID> deleteMemberByPublicId(@PathVariable UUID publicId) {
+    public UUID deleteMemberByPublicId(@PathVariable UUID publicId) {
         adminService.deleteMemberByPublicId(publicId);
-        return ResponseEntity.ok(publicId);
+        return publicId;
     }
 
     @DeleteMapping("/deletePost/{publicId}")
-    public ResponseEntity<UUID> deletePostByPublicId(@PathVariable UUID publicId) {
+    public UUID deletePostByPublicId(@PathVariable UUID publicId) {
         adminService.deletePostByPublicId(publicId);
-        return ResponseEntity.ok(publicId);
+        return publicId;
     }
 
 

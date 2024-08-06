@@ -76,7 +76,6 @@ public class MemberService {
 
     public JwtResponse loginMember(MemberLoginDTO loginMember) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginMember.username(), loginMember.password()));
-        SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = jwtUtils.generateJwtToken(authentication);
         User userDetails = (User) authentication.getPrincipal();
         Set<String> roles = userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toSet());
