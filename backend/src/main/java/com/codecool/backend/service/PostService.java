@@ -11,7 +11,6 @@ import com.codecool.backend.model.Report;
 import com.codecool.backend.repository.MemberRepository;
 import com.codecool.backend.repository.PostRepository;
 import com.codecool.backend.repository.ReportRepository;
-import com.codecool.backend.security.jwt.JwtUtils;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

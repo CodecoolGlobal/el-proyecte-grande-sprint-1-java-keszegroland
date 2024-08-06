@@ -4,7 +4,6 @@ import com.codecool.backend.controller.dto.MemberDTO;
 import com.codecool.backend.controller.dto.PostDTO;
 import com.codecool.backend.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -36,15 +35,15 @@ public class AdminController {
     }
 
     @DeleteMapping("/deleteMember/{publicId}")
-    public ResponseEntity<UUID> deleteMemberByPublicId(@PathVariable UUID publicId) {
+    public UUID deleteMemberByPublicId(@PathVariable UUID publicId) {
         adminService.deleteMemberByPublicId(publicId);
-        return ResponseEntity.ok(publicId);
+        return publicId;
     }
 
     @DeleteMapping("/deletePost/{publicId}")
-    public ResponseEntity<UUID> deletePostByPublicId(@PathVariable UUID publicId) {
+    public UUID deletePostByPublicId(@PathVariable UUID publicId) {
         adminService.deletePostByPublicId(publicId);
-        return ResponseEntity.ok(publicId);
+        return publicId;
     }
 
 
