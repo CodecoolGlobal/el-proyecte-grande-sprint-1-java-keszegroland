@@ -1,8 +1,10 @@
 package com.codecool.backend.security;
 
 import com.codecool.backend.model.Member;
+import com.codecool.backend.model.MemberRole;
 import com.codecool.backend.model.Role;
 import com.codecool.backend.repository.MemberRepository;
+import com.codecool.backend.repository.MemberRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -13,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
@@ -27,10 +30,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Member memberEntity = memberRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(username));
-        Set<SimpleGrantedAuthority> roles = new HashSet<>();
-        for (Role role : memberEntity.getRoles()) {
-            roles.add(new SimpleGrantedAuthority(role.name()));
-        }
+
+        Set<SimpleGrantedAuthority> roles = memberEntity.getRoles().stream()
+                .map(role -> new SimpleGrantedAuthority(role.getRole().name()))
+                .collect(Collectors.toSet());
+
         return new User(memberEntity.getUsername(), memberEntity.getPassword(), roles);
     }
 

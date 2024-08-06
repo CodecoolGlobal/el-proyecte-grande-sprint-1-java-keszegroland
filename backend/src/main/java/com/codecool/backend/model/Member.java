@@ -4,12 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.UuidGenerator;
-import com.codecool.backend.model.Role;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "members")
@@ -27,17 +23,19 @@ public class Member {
     private String username;
     private String password;
     private String email;
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles = new HashSet<>();
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "memberRoles",
+            joinColumns = @JoinColumn(name = "memberId"),
+            inverseJoinColumns = @JoinColumn(name = "roleId"))
+    private Set<MemberRole> roles = new HashSet<>();
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<Comment> comments;
+    private List<Comment> comments = new ArrayList<>();
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<Report> reports;
+    private List<Report> reports = new ArrayList<>();
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+    private List<Post> posts = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<Post> posts;
-
-    public void addRole(Role role) {
+    public void addRole(MemberRole role) {
         roles.add(role);
     }
 }
