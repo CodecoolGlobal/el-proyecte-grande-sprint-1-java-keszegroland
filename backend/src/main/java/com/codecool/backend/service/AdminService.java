@@ -58,6 +58,7 @@ public class AdminService {
                 .toList();
     }
 
+    @Transactional
     public ResponseEntity<Member> promoteUserToAdmin(String username) {
         Member member = memberRepository.findByUsername(username).orElseThrow(() -> new MemberIsNotFoundException("Member not found"));
         member.addRole(Role.ROLE_ADMIN);
@@ -65,10 +66,12 @@ public class AdminService {
         return ResponseEntity.ok(member);
     }
 
+    @Transactional
     public void deleteMemberByPublicId(UUID publicId) {
         memberRepository.deleteByPublicId(publicId);
     }
 
+    @Transactional
     public void deletePostByPublicId(UUID publicId) {
         postRepository.deleteByPublicId(publicId);
     }
