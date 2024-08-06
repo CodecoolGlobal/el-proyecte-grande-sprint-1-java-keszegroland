@@ -2,9 +2,9 @@ package com.codecool.backend.controller;
 
 import com.codecool.backend.controller.dto.MemberLoginDTO;
 import com.codecool.backend.controller.dto.NewMemberDTO;
+import com.codecool.backend.model.payload.JwtResponse;
 import com.codecool.backend.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
@@ -25,8 +25,8 @@ public class MemberController {
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> loginMember(@RequestBody MemberLoginDTO member) {
-        return ResponseEntity.ok(memberService.loginMember(member));
+    public JwtResponse loginMember(@RequestBody MemberLoginDTO member) {
+        return memberService.loginMember(member);
     }
 
 }
