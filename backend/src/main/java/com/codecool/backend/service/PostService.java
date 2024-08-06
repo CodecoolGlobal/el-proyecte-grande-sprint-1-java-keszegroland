@@ -102,7 +102,7 @@ public class PostService {
     }
 
     private Member getMemberByPublicId(UUID memberPublicId) {
-        return memberRepository.findByPublicId(memberPublicId);
+        return memberRepository.findByPublicId(memberPublicId).orElseThrow(()-> new MemberIsNotFoundException("Member could not be found in the database."));
     }
 
     private PostDTO convertPostToDTO(Post post) {
