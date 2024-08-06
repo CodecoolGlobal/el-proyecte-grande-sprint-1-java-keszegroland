@@ -1,6 +1,6 @@
 import './App.css';
-import { useGetToken } from './Components/CustomHook/CustomHook';
-import MainPage from './Pages/MainPage/MainPage';
+import { useGetToken } from './Components/CustomHook/CustomHook.jsx';
+import MainPage from './Pages/MainPage/MainPage.jsx';
 import { createContext, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 
