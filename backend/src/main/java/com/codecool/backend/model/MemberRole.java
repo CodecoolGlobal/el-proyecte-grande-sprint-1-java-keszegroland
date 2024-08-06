@@ -1,10 +1,10 @@
 package com.codecool.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -22,13 +22,6 @@ public class MemberRole {
     private Role role;
 
     @ManyToMany(mappedBy = "roles", fetch = FetchType.EAGER)
+    @JsonBackReference
     private Set<Member> members;
-
-    public MemberRole() {
-    }
-
-    public MemberRole(Role role) {
-        this.role = role;
-        this.members = new HashSet<>();
-    }
 }
