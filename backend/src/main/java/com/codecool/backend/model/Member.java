@@ -1,5 +1,7 @@
 package com.codecool.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -23,10 +25,11 @@ public class Member {
     private String username;
     private String password;
     private String email;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "memberRoles",
             joinColumns = @JoinColumn(name = "memberId"),
             inverseJoinColumns = @JoinColumn(name = "roleId"))
+    @JsonManagedReference
     private Set<MemberRole> roles = new HashSet<>();
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<>();

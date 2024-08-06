@@ -52,7 +52,7 @@ public class AdminService {
     }
 
     @Transactional
-    public UUID promoteUserToAdmin(String username) {
+    public MemberDTO promoteUserToAdmin(String username) {
         Member member = memberRepository.findByUsername(username).orElseThrow(() -> new MemberIsNotFoundException("Member not found"));
 
         Optional<MemberRole> adminRole = memberRoleRepository.findByRole(Role.ROLE_ADMIN);
@@ -66,7 +66,7 @@ public class AdminService {
             member.getRoles().add(adminRole.get());
             memberRepository.save(member);
         }
-        return member.getPublicId();
+        return convertMemberToDTO(member);
     }
 
     @Transactional

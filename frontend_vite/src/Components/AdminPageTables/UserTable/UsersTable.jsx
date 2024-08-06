@@ -21,7 +21,7 @@ function UsersTable({ members, onPromote, onDelete }) {
             <td>{member?.publicId}</td>
             <td><p className="full-name">{member?.firstName} {member?.lastName}</p> <span className="email">{member?.email}</span></td>
             <td>{member?.username}</td>
-            <td>{member?.roles?.map((role) => `${role} `)}</td>
+            <td>{member?.roles?.map((current) => `${current.role} `)}</td>
             <td>
               <button type="button" className="delete-button" onClick={() => onDelete(member?.publicId)}>Delete</button>
               <button type="button" className="promote-button" onClick={() => onPromote(member?.username)}>Promote to Admin</button>

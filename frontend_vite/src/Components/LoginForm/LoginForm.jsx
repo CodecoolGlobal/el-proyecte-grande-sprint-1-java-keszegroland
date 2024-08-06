@@ -27,7 +27,6 @@ function Login() {
             .then((member) => {
                 localStorage.setItem("jwtToken", member.jwt)
                 localStorage.setItem('user', JSON.stringify(member))
-                console.log(member)
                 login({ member })
                 setLoading(false);
                 navigate("/");
