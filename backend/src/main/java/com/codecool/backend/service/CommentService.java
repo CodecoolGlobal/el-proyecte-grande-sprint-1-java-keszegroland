@@ -1,6 +1,7 @@
 package com.codecool.backend.service;
 
 import com.codecool.backend.controller.dto.NewCommentDTO;
+import com.codecool.backend.exception.MemberIsNotFoundException;
 import com.codecool.backend.model.Comment;
 import com.codecool.backend.model.Post;
 import com.codecool.backend.model.Member;
@@ -40,7 +41,7 @@ public class CommentService {
     }
 
     private Member getMemberForComment(UUID memberId) {
-        return memberRepository.findByPublicId(memberId);
+        return memberRepository.findByPublicId(memberId).orElseThrow(() -> new MemberIsNotFoundException("Member not found."));
     }
 
     private Post getPostForComment(UUID postId) {

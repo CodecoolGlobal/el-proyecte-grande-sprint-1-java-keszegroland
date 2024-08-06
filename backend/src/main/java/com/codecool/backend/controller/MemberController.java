@@ -1,17 +1,13 @@
 package com.codecool.backend.controller;
 
-import com.codecool.backend.controller.dto.MemberDTO;
 import com.codecool.backend.controller.dto.MemberLoginDTO;
 import com.codecool.backend.controller.dto.NewMemberDTO;
-import com.codecool.backend.model.Member;
 import com.codecool.backend.service.AdminService;
 import com.codecool.backend.service.MemberService;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @RestController
@@ -34,6 +30,11 @@ public class MemberController {
     @PostMapping("/login")
     public ResponseEntity<?> loginMember(@RequestBody MemberLoginDTO member) {
         return ResponseEntity.ok(memberService.loginMember(member));
+    }
+
+    @PutMapping("/promote/{username}")
+    public UUID promoteUserToAdmin(@PathVariable String username) {
+        return adminService.promoteUserToAdmin(username);
     }
 
 }
