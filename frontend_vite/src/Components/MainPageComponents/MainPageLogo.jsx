@@ -1,4 +1,4 @@
-import logo from "../../blackLogo.PNG";
+import logo from "../../blackLogo.png";
 import "./mainpageLogo.css"
 
 export default function MainPageLogo() {

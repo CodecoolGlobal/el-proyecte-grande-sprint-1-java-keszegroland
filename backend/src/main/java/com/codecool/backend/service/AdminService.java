@@ -51,7 +51,8 @@ public class AdminService {
         return memberRepository.findAll().stream().map(this::convertMemberToDTO).toList();
     }
 
-    public UUID promoteUserToAdmin(String username) {
+    @Transactional
+    public ResponseEntity<Member> promoteUserToAdmin(String username) {
         Member member = memberRepository.findByUsername(username).orElseThrow(() -> new MemberIsNotFoundException("Member not found"));
 
         Optional<MemberRole> adminRole = memberRoleRepository.findByRole(Role.ROLE_ADMIN);
@@ -68,10 +69,12 @@ public class AdminService {
         return member.getPublicId();
     }
 
+    @Transactional
     public void deleteMemberByPublicId(UUID publicId) {
         memberRepository.deleteByPublicId(publicId);
     }
 
+    @Transactional
     public void deletePostByPublicId(UUID publicId) {
         postRepository.deleteByPublicId(publicId);
     }
