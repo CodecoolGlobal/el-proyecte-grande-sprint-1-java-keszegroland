@@ -32,6 +32,15 @@ services:
     ports:
       - "8080:8080"
 
-
+  frontend: 
+    build: 
+      context: ./frontend_vite
+      dockerfile: Dockerfile
+    container_name: strings_frontend_container
+    depends_on:
+      - backend
+    ports:
+      - "5173:5173"
+      
 volumes:
   postgres_data:
