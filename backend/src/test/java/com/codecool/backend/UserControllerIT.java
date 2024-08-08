@@ -8,6 +8,7 @@ import com.codecool.backend.security.jwt.JwtUtils;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -17,7 +18,9 @@ import org.springframework.http.MediaType;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -55,10 +58,18 @@ public class UserControllerIT {
     @Test
     public void sendSignUpRequestAndItReturnsCreatedStatus() throws Exception {
         NewMemberDTO newMemberDTO = new NewMemberDTO("Apple", "Red", "redApple", "123", "red@gmail.com");
-        mockMvc.perform(post("/api/member/signUp")
+        MvcResult result = mockMvc.perform(post("/api/member/signUp")
                         .content(objectMapper.writeValueAsString(newMemberDTO))
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andReturn();
+
+        String responseContent = result.getResponse().getContentAsString();
+        responseContent = responseContent.replace("\"", "");
+
+        Member member = memberRepository.findByUsername("redApple").get();
+        String expected = member.getPublicId().toString();
+        assertEquals(expected, responseContent);
     }
 
     @Test
