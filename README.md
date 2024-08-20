@@ -21,6 +21,7 @@ Developed by:
 - [Technologies](#technologies)
 
 ## Overview
+El Proyecte Grande is a modern social media platform with a robust backend and a responsive frontend. Users can upload images, add descriptions, like posts, and comment. This project demonstrates comprehensive full-stack development, including database management, RESTful API design, user authentication, and responsive UI development.
 
 ## Getting Started
   ### Prerequisites
@@ -112,11 +113,50 @@ Developed by:
         ```
 
   ### User Management
+  - User Registration and Authentication using Spring Security and JWT tokens.
+  - Features include:
+    - User Registration: Allows new users to sign up.
+    - Authentication: Users log in to receive a JWT token.
+    - Authorization: Secures endpoints to authenticated users.
+    - Role-based Access Control: Differentiates between user and admin roles.
 
   ### Frontend Integration
+  - Built with React-Vite for a responsive and dynamic user interface.
+  - Features include:
+    - Responsive design for various screen sizes.
+    - RESTful API integration for smooth data exchange between frontend and backend.
+    - Client-side routing with React Router for multiple pages.
 
   ### Integration Testing
+  - Comprehensive integration tests using MockMvc and Mockito.
+  - Tests cover API calls and database interactions to ensure system reliability.
 
 ## Usage
+Using El Proyecte Grande:
+  - Register an Account:
+    - Detail: Sign up to create a new account.
+    - Visual: ![SignupImage](.//ImagesReadme/signup.png)
+  - Log In:
+    - Detail: Use your credentials to log in.
+    - Visual: ![LoginImage](.//ImagesReadme/login.png)
+  - Set the Theme:
+    - Detail: Choose between light or dark mode.
+    - Visuals: ![LightModeImage](.//ImagesReadme/lightMode.png) ![DarkModeImage](.//ImagesReadme/darkMode.png)
+  - Post Content:
+    - Detail: Upload pictures, add descriptions, and share them with others.
+    - Visual: ![UploadPicture](.//ImagesReadme/uploadPicture.png)
+  - Interact:
+    - Detail: Like posts and leave comments to engage with the community.
+    - Visuals: ![LikePost](.//ImagesReadme/likePost.png) ![comment](.//ImagesReadme/comment.png)
+  - Report posts:
+    - Detail: Flag inappropriate content for review.
+    - Visual: ![ReportPost](.//ImagesReadme/reportPost.png)
+  - Admin Access:
+    - Detail: Admins can manage users and posts via the [http://localhost:5173/admin-dashboard](Admin Dashboard).
+    - Visuals: ![HandleMembers](.//ImagesReadme/handleMembers.png) ![HandlePosts](.//ImagesReadme/handlePosts.png)
 
 ## Technologies
+Technologies used in this application:
+  - Backend: Spring Boot, Spring MVC, Spring Security, Hibernate, PostgreSQL
+  - Frontend: React-Vite, Vanilla css
+  - Containerization: Docker, Docker Compose
