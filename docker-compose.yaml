@@ -7,8 +7,6 @@ services:
       - POSTGRES_DB=${POSTGRES_DB}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
-    ports:
-      - "5454:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
@@ -21,16 +19,13 @@ services:
     depends_on:
       - db
     environment:
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=${SPRING_JPA_HIBERNATE_DDL_AUTO}
-      - SPRING_DATASOURCE_URL=${SPRING_DATASOURCE_URL}
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/${POSTGRES_DB}
       - SPRING_DATASOURCE_USERNAME=${SPRING_DATASOURCE_USERNAME}
       - SPRING_DATASOURCE_PASSWORD=${SPRING_DATASOURCE_PASSWORD}
-      - SPRING_DATASOURCE_DRIVER_CLASS_NAME=${SPRING_DATASOURCE_DRIVER_CLASS_NAME}
-      - SPRING_JPA_SHOW_SQL=${SPRING_JPA_SHOW_SQL}
-      - CODECOOL_APP_JWTSECRET=${CODECOOL_APP_JWTSECRET}
-      - CODECOOL_APP_JWTEXPIRATIONMS=${CODECOOL_APP_JWTEXPIRATIONMS}
-    ports:
-      - "8080:8080"
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_SHOW_SQL=true
+      - CODECOOL_APP_JWTSECRET=======================CodeCool=Spring===========================
+      - CODECOOL_APP_JWTEXPIRATIONMS=86400000
 
   frontend: 
     build: 
@@ -40,7 +35,7 @@ services:
     depends_on:
       - backend
     ports:
-      - "5173:5173"
+      - "5173:3111"
       
 volumes:
   postgres_data:
