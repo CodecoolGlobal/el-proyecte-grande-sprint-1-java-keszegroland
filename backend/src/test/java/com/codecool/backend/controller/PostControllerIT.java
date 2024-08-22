@@ -1,4 +1,4 @@
-package com.codecool.backend;
+package com.codecool.backend.controller;
 
 import com.codecool.backend.controller.dto.NewPostDTO;
 import com.codecool.backend.model.Member;
@@ -30,7 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestPropertySource(locations = "classpath:application-integrationTest.properties")
-class BackendApplicationIT {
+class PostControllerIT {
 
     @Autowired
     private MockMvc mockMvc;
