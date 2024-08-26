@@ -34,12 +34,12 @@ El Proyecte Grande is a modern social media platform with a robust backend and a
 
   ### Installation
   To set up the project locally:
-1. Clone the repository from GitHub:
+1. Clone the repository from GitHub into your desired folder:
    ```bash
-    git@github.com:CodecoolGlobal/el-proyecte-grande-sprint-1-java-keszegroland.git
+    git clone git@github.com:CodecoolGlobal/el-proyecte-grande-sprint-1-java-keszegroland.git
 
     # navigate into the project directory
-    cd el-proyecte-grande-sprint-1-java-keszegroland/
+    cd <foldername>
    ```
 
 2. Backend Setup:
@@ -69,6 +69,7 @@ El Proyecte Grande is a modern social media platform with a robust backend and a
         set DATABASE_PASSWORD=YOUR_DATABASE_PASSWORD
         set JWTSECRETKEY=YOUR_JWT_SECRET_KEY
        ```
+       *JWT Secret key should be 64 characters long.*
 
    - Run the application:
      ```bash
@@ -78,7 +79,7 @@ El Proyecte Grande is a modern social media platform with a robust backend and a
 3. Frontend Setup:
    - Navigate to the frontend directory:
      ```bash
-      cd frontend_vite
+      cd ../frontend_vite
      ```
 
    - Install dependencies:
@@ -135,28 +136,28 @@ El Proyecte Grande is a modern social media platform with a robust backend and a
 Using El Proyecte Grande:
   - Register an Account:
     - Detail: Sign up to create a new account.
-    - Visual: ![SignupImage](.//ImagesReadme/signup.png)
+    - Visual: ![SignupImage](.//ImagesReadme/epg_signup.png)
   - Log In:
     - Detail: Use your credentials to log in.
-    - Visual: ![LoginImage](.//ImagesReadme/login.png)
+    - Visual: ![LoginImage](.//ImagesReadme/epg_login.png)
   - Set the Theme:
     - Detail: Choose between light or dark mode.
-    - Visuals: ![LightModeImage](.//ImagesReadme/lightMode.png) ![DarkModeImage](.//ImagesReadme/darkMode.png)
+    - Visuals: ![LightModeImage](.//ImagesReadme/epg_lightMode.png) ![DarkModeImage](.//ImagesReadme/epg_darkMode.png)
   - Post Content:
     - Detail: Upload pictures, add descriptions, and share them with others.
-    - Visual: ![UploadPicture](.//ImagesReadme/uploadPicture.png)
+    - Visual: ![UploadPicture](.//ImagesReadme/epg_uploadPicture.png)
   - Interact:
     - Detail: Like posts and leave comments to engage with the community.
-    - Visuals: ![LikePost](.//ImagesReadme/likePost.png) ![comment](.//ImagesReadme/comment.png)
+    - Visuals: ![LikePost](.//ImagesReadme/epg_likePost.png) ![comment](.//ImagesReadme/epg_comment.png)
   - Report posts:
     - Detail: Flag inappropriate content for review.
-    - Visual: ![ReportPost](.//ImagesReadme/reportPost.png)
+    - Visual: ![ReportPost](.//ImagesReadme/epg_reportPost.png)
   - Admin Access:
     - Detail: Admins can manage users and posts via the [http://localhost:5173/admin-dashboard](Admin Dashboard).
-    - Visuals: ![HandleMembers](.//ImagesReadme/handleMembers.png) ![HandlePosts](.//ImagesReadme/handlePosts.png)
+    - Visuals: ![HandleMembers](.//ImagesReadme/epg_handleMembers.png) ![HandlePosts](.//ImagesReadme/epg_handlePosts.png)
 
 ## Technologies
 Technologies used in this application:
-  - Backend: Spring Boot, Spring MVC, Spring Security, Hibernate, PostgreSQL
+  - Backend: Spring Boot, Spring MVC, Spring Data, JPA, Spring Security, Hibernate, PostgreSQL
   - Frontend: React-Vite, Vanilla css
-  - Containerization: Docker, Docker Compose
+  - Containerization: Docker
