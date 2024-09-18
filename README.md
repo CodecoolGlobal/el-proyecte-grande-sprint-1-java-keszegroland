@@ -7,6 +7,8 @@ Developed by:
 - [Brigitta Zsugonics](https://github.com/zsbrigi)
 - [Roland Keszeg](https://github.com/keszegroland)
 
+![LightModeImage](.//ImagesReadme/epg_lightMode.png) 
+
 ## Table of Contents
 - [Overview](#overview)
 - [Getting Started](#getting-Started)
@@ -141,8 +143,8 @@ Using El Proyecte Grande:
     - Detail: Use your credentials to log in.
     - Visual: ![LoginImage](.//ImagesReadme/epg_login.png)
   - Set the Theme:
-    - Detail: Choose between light or dark mode.
-    - Visuals: ![LightModeImage](.//ImagesReadme/epg_lightMode.png) ![DarkModeImage](.//ImagesReadme/epg_darkMode.png)
+    - Detail: Set the theme to dark mode.
+    - Visuals: ![DarkModeImage](.//ImagesReadme/epg_darkMode.png)
   - Post Content:
     - Detail: Upload pictures, add descriptions, and share them with others.
     - Visual: ![UploadPicture](.//ImagesReadme/epg_uploadPicture.png)
