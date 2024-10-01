@@ -3,14 +3,15 @@
 El Proyecte Grande is a full-stack web application designed as a social media platform where users can upload pictures, add descriptions, like posts, and leave comments. The primary focus of this data-centric application is to manage and process user-generated data effectively.
 
 Developed by:
-- [Eszter Fodor](https://github.com/eszti9902)
-- [Brigitta Zsugonics](https://github.com/zsbrigi)
-- [Roland Keszeg](https://github.com/keszegroland)
+- [![fodoreszter][fodoreszter]][fodoreszter-url]
+- [![zsugonicsbrigitta][zsugonicsbrigitta]][zsugonicsbrigitta-url]
+- [![keszegroland][keszegroland]][keszegroland-url]
 
 ![LightModeImage](.//ImagesReadme/epg_lightMode.png) 
 
 ## Table of Contents
 - [Overview](#overview)
+- [Technologies](#technologies)
 - [Getting Started](#getting-Started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -20,10 +21,27 @@ Developed by:
   - [Frontend Integration](#frontend-integration)
   - [Integration Testing](#integration-testing)
 - [Usage](#usage)
-- [Technologies](#technologies)
 
 ## Overview
 El Proyecte Grande is a modern social media platform with a robust backend and a responsive frontend. Users can upload images, add descriptions, like posts, and comment. This project demonstrates comprehensive full-stack development, including database management, RESTful API design, user authentication, and responsive UI development.
+
+## Technologies
+### Backend:
+- [![spring-boot][spring-boot]][spring-boot-url]
+- [![spring-web-mvc][spring-web-mvc]][spring-web-mvc-url]
+- [![spring-data-jpa][spring-data-jpa]][spring-data-jpa-url]
+- [![spring-security][spring-security]][spring-security-url]
+- [![hibernate][hibernate]][hibernate-url]
+
+### Database:
+- [![postgresql][postgresql]][postgresql-url]
+
+### Frontend:
+- [![React-Vite][React-Vite]][Vite-URL]
+- [![Css][Css3]][Css-url]
+
+### Containerization:
+- [![docker][docker]][docker-url]
 
 ## Getting Started
 
@@ -183,26 +201,6 @@ Using El Proyecte Grande:
     - Visuals: ![HandleMembers](.//ImagesReadme/epg_handleMembers.png) ![HandlePosts](.//ImagesReadme/epg_handlePosts.png)
 
 
-
-## Technologie Stack
-### Backend:
-- [![spring-boot][spring-boot]][spring-boot-url]
-- [![spring-web-mvc][spring-web-mvc]][spring-web-mvc-url]
-- [![spring-data-jpa][spring-data-jpa]][spring-data-jpa-url]
-- [![spring-security][spring-security]][spring-security-url]
-- [![hibernate][hibernate]][hibernate-url]
-
-### Database:
-- [![postgresql][postgresql]][postgresql-url]
-
-### Frontend:
-- [![React-Vite][React-Vite]][Vite-URL]
-- [![Css][Css3]][Css-url]
-
-### Containerization:
-- [![docker][docker]][docker-url]
-
-
   [React-Vite]: https://img.shields.io/badge/-Vite-D3D3D3?logo=Vite&logoColor=646CFF
 [Vite-URL]: https://vitejs.dev/guide/
 
@@ -241,3 +239,12 @@ Using El Proyecte Grande:
 
 [npm]: https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white
 [npm-url]: https://www.npmjs.com/
+
+[keszegroland]: https://img.shields.io/badge/Roland%20Keszeg-181717?style=for-the-badge&logo=github&logoColor=white
+[keszegroland-url]: https://github.com/keszegroland
+
+[zsugonicsbrigitta]: https://img.shields.io/badge/Brigitta%20Zsugonics-181717?style=for-the-badge&logo=github&logoColor=white
+[zsugonicsbrigitta-url]: https://github.com/zsbrigi
+
+[fodoreszter]: https://img.shields.io/badge/Eszter%20Fodor-181717?style=for-the-badge&logo=github&logoColor=white
+[fodoreszter-url]: https://github.com/eszti9902
